@@ -1,0 +1,1306 @@
+{
+  "sourceLanguage": "de",
+  "strings": {
+    "%@ Portionen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@ servings"
+          }
+        }
+      }
+    },
+    "%lld Fotos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld photos"
+          }
+        }
+      }
+    },
+    "%lld Schritte": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld steps"
+          }
+        }
+      }
+    },
+    "%lld Zutaten": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld ingredients"
+          }
+        }
+      }
+    },
+    "1 Foto": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "1 photo"
+          }
+        }
+      }
+    },
+    "Abbrechen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        }
+      }
+    },
+    "Angaben": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Details"
+          }
+        }
+      }
+    },
+    "Anmeldung fehlgeschlagen. Bitte prüfe Benutzername, Passwort oder API-Token.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign-in failed. Please check your username, password or API token."
+          }
+        }
+      }
+    },
+    "Apple Intelligence ist ausgeschaltet. Du kannst es in den Systemeinstellungen aktivieren.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple Intelligence is turned off. You can turn it on in Settings."
+          }
+        }
+      }
+    },
+    "Audio wird mit KI transkribiert": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transcribing audio with AI"
+          }
+        }
+      }
+    },
+    "Auf %@ übersetzen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Translate to %@"
+          }
+        }
+      }
+    },
+    "Auf dem iPhone verarbeiten": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Process on iPhone"
+          }
+        }
+      }
+    },
+    "Aus Fotos wählen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose from Photos"
+          }
+        }
+      }
+    },
+    "Aus Mealie löschen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete from Mealie"
+          }
+        }
+      }
+    },
+    "Aus der Beschreibung übernehmen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use the description"
+          }
+        }
+      }
+    },
+    "Bearbeiten": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit"
+          }
+        }
+      }
+    },
+    "Beschreibung": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Description"
+          }
+        }
+      }
+    },
+    "Bild wird heruntergeladen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Downloading image"
+          }
+        }
+      }
+    },
+    "Dabei wird die Quelle an deinen Mealie-Server gesendet und dort vom eingerichteten KI-Dienst ausgewertet.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This sends the source to your Mealie server, where the AI service set up there processes it."
+          }
+        }
+      }
+    },
+    "Das Tageskontingent der YouTube-API ist aufgebraucht.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The daily YouTube API quota has been used up."
+          }
+        }
+      }
+    },
+    "Das Video wurde nicht gefunden oder ist privat.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The video wasn't found or is private."
+          }
+        }
+      }
+    },
+    "Das dauert meist nur ein paar Sekunden.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This usually takes just a few seconds."
+          }
+        }
+      }
+    },
+    "Das hat nicht geklappt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "That didn't work"
+          }
+        }
+      }
+    },
+    "Das importierte Rezept wird wieder aus Mealie entfernt.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The imported recipe will be removed from Mealie."
+          }
+        }
+      }
+    },
+    "Das lokale Modell hat die Verarbeitung abgelehnt.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The on-device model declined to process this."
+          }
+        }
+      }
+    },
+    "Das lokale Modell konnte nicht antworten. Auf dem Simulator steht Apple Intelligence oft nicht bereit.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The on-device model didn't respond. Apple Intelligence is often unavailable in the Simulator."
+          }
+        }
+      }
+    },
+    "Das lokale Modell wird noch geladen. Versuch es gleich noch einmal.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The on-device model is still downloading. Please try again shortly."
+          }
+        }
+      }
+    },
+    "Der Inhalt wird an %@ gesendet und dort mit Mealie AI ausgewertet.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The content is sent to %@ and processed there with Mealie AI."
+          }
+        }
+      }
+    },
+    "Der Link wird an %@ gesendet. Mealie erstellt daraus das Rezept – bei Videos mit dem dort eingerichteten KI-Dienst.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The link is sent to %@. Mealie creates the recipe from it – for videos using the AI service set up there."
+          }
+        }
+      }
+    },
+    "Der Mealie-Server hat mit Fehler %lld geantwortet.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The Mealie server responded with error %lld."
+          }
+        }
+      }
+    },
+    "Der YouTube-API-Schlüssel ist ungültig.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The YouTube API key is invalid."
+          }
+        }
+      }
+    },
+    "Die Auswertung passiert auf deinem iPhone. An %@ geht erst das fertige Rezept.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Processing happens on your iPhone. Only the finished recipe is sent to %@."
+          }
+        }
+      }
+    },
+    "Die Quelle ist zu lang für die lokale Verarbeitung.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The source is too long for on-device processing."
+          }
+        }
+      }
+    },
+    "Die Server-Adresse ist ungültig.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The server address is invalid."
+          }
+        }
+      }
+    },
+    "Die Verbindung zu Mealie wurde unterbrochen, bevor der Import fertig war.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The connection to Mealie was lost before the import finished."
+          }
+        }
+      }
+    },
+    "Die lokale Verarbeitung ist fehlgeschlagen.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On-device processing failed."
+          }
+        }
+      }
+    },
+    "Die lokale Verarbeitung unterstützt diese Sprache nicht.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "On-device processing doesn't support this language."
+          }
+        }
+      }
+    },
+    "Dieses Gerät unterstützt Apple Intelligence nicht.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This device doesn't support Apple Intelligence."
+          }
+        }
+      }
+    },
+    "Erneut versuchen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try Again"
+          }
+        }
+      }
+    },
+    "Fehler": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Error"
+          }
+        }
+      }
+    },
+    "Fertig": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        }
+      }
+    },
+    "Foto aufnehmen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Take Photo"
+          }
+        }
+      }
+    },
+    "Fotos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photos"
+          }
+        }
+      }
+    },
+    "Ganzes Video analysieren": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Analyze the whole video"
+          }
+        }
+      }
+    },
+    "Gesamt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total"
+          }
+        }
+      }
+    },
+    "Gesamt %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Total %@"
+          }
+        }
+      }
+    },
+    "Gespeichert": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved"
+          }
+        }
+      }
+    },
+    "Import fehlgeschlagen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import failed"
+          }
+        }
+      }
+    },
+    "In der Quelle steht zu wenig Text für ein Rezept.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The source doesn't contain enough text for a recipe."
+          }
+        }
+      }
+    },
+    "In der Videobeschreibung gefunden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Found in the video description"
+          }
+        }
+      }
+    },
+    "Kategorien übernehmen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import categories"
+          }
+        }
+      }
+    },
+    "Keine Schritte erkannt.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No steps found."
+          }
+        }
+      }
+    },
+    "Keine Zutaten erkannt.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No ingredients found."
+          }
+        }
+      }
+    },
+    "Kochen %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cook %@"
+          }
+        }
+      }
+    },
+    "Kochmodus": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cooking Mode"
+          }
+        }
+      }
+    },
+    "Kochmodus beenden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "End Cooking Mode"
+          }
+        }
+      }
+    },
+    "Kochzeit": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cook time"
+          }
+        }
+      }
+    },
+    "Mealie arbeitet …": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mealie is working …"
+          }
+        }
+      }
+    },
+    "Mealie hat nicht alles gefunden. Prüfe das Rezept am besten kurz.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mealie didn't find everything. It's best to check the recipe."
+          }
+        }
+      }
+    },
+    "Mealie lädt das Video und transkribiert den Ton. Das dauert meist 20–60 Sekunden.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mealie downloads the video and transcribes the audio. This usually takes 20–60 seconds."
+          }
+        }
+      }
+    },
+    "Mealie wertet Ton und Untertitel aus, dauert länger": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mealie processes audio and subtitles, takes longer"
+          }
+        }
+      }
+    },
+    "Mit Image Playground erstellen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create with Image Playground"
+          }
+        }
+      }
+    },
+    "Mit Mealie AI erneut versuchen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try Again with Mealie AI"
+          }
+        }
+      }
+    },
+    "Neues Rezept": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New Recipe"
+          }
+        }
+      }
+    },
+    "Nicht gefunden. Ist das wirklich ein Mealie-Server?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not found. Is this really a Mealie server?"
+          }
+        }
+      }
+    },
+    "Notiz hinzufügen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Note"
+          }
+        }
+      }
+    },
+    "Notizen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notes"
+          }
+        }
+      }
+    },
+    "OK": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "OK"
+          }
+        }
+      }
+    },
+    "Originalrezept öffnen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Original Recipe"
+          }
+        }
+      }
+    },
+    "Portionen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Servings"
+          }
+        }
+      }
+    },
+    "Quelle wird auf dem Gerät gelesen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reading the source on the device"
+          }
+        }
+      }
+    },
+    "Rezept": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recipe"
+          }
+        }
+      }
+    },
+    "Rezept ansehen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View Recipe"
+          }
+        }
+      }
+    },
+    "Rezept auf %@ gefunden – schnell und genau": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recipe found on %@ – fast and accurate"
+          }
+        }
+      }
+    },
+    "Rezept importieren": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import Recipe"
+          }
+        }
+      }
+    },
+    "Rezept nicht verfügbar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recipe Unavailable"
+          }
+        }
+      }
+    },
+    "Rezept verwerfen?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Discard Recipe?"
+          }
+        }
+      }
+    },
+    "Rezept wieder aus Mealie löschen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete Recipe from Mealie Again"
+          }
+        }
+      }
+    },
+    "Rezept wird auf dem iPhone erstellt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Creating the recipe on the iPhone"
+          }
+        }
+      }
+    },
+    "Rezept wird aus dem Transkript erstellt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Creating the recipe from the transcript"
+          }
+        }
+      }
+    },
+    "Rezept wird erstellt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Creating the recipe"
+          }
+        }
+      }
+    },
+    "Rezept wird geladen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading the recipe"
+          }
+        }
+      }
+    },
+    "Rezept wird in Mealie gespeichert": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saving the recipe to Mealie"
+          }
+        }
+      }
+    },
+    "Rezeptdaten werden extrahiert": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Extracting recipe data"
+          }
+        }
+      }
+    },
+    "Schließen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close"
+          }
+        }
+      }
+    },
+    "Schritt hinzufügen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Step"
+          }
+        }
+      }
+    },
+    "Sichern": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save"
+          }
+        }
+      }
+    },
+    "Speichern fehlgeschlagen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saving Failed"
+          }
+        }
+      }
+    },
+    "Tag suchen oder anlegen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search or create a tag"
+          }
+        }
+      }
+    },
+    "Tags": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tags"
+          }
+        }
+      }
+    },
+    "Tags übernehmen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import tags"
+          }
+        }
+      }
+    },
+    "Text": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Text"
+          }
+        }
+      }
+    },
+    "Text wird erkannt (Foto %lld von %lld)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recognizing text (photo %lld of %lld)"
+          }
+        }
+      }
+    },
+    "Text wird im Foto erkannt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recognizing text in the photo"
+          }
+        }
+      }
+    },
+    "Tipp": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tip"
+          }
+        }
+      }
+    },
+    "Tipp, Variante, Beilage …": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tip, variation, side dish …"
+          }
+        }
+      }
+    },
+    "Tipp: Für Videos braucht Mealie einen KI-Anbieter mit Audio-Transkription (Einstellungen → KI in Mealie).": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tip: For videos, Mealie needs an AI provider with audio transcription (Settings → AI in Mealie)."
+          }
+        }
+      }
+    },
+    "Titel": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Title"
+          }
+        }
+      }
+    },
+    "Titel und Beschreibung stammen aus der YouTube-API. Für den Import geht nur deine Wahl an %@ – beim ganzen Video wertet Mealie es mit dem dort eingerichteten KI-Dienst aus.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Title and description come from the YouTube API. Only your choice is sent to %@ – for the whole video, Mealie processes it with the AI service set up there."
+          }
+        }
+      }
+    },
+    "Titel wird geladen …": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading title …"
+          }
+        }
+      }
+    },
+    "Titelbild hinzufügen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Cover Image"
+          }
+        }
+      }
+    },
+    "Titelbild konnte nicht gespeichert werden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Couldn't Save the Cover Image"
+          }
+        }
+      }
+    },
+    "Titelbild ändern": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change Cover Image"
+          }
+        }
+      }
+    },
+    "Unerwartete Antwort vom Server.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unexpected response from the server."
+          }
+        }
+      }
+    },
+    "Verbindung zu Mealie wird hergestellt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connecting to Mealie"
+          }
+        }
+      }
+    },
+    "Verlauf": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Progress"
+          }
+        }
+      }
+    },
+    "Video ansehen (%@)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Watch Video (%@)"
+          }
+        }
+      }
+    },
+    "Video wird heruntergeladen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Downloading video"
+          }
+        }
+      }
+    },
+    "Videobeschreibung wird geprüft …": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Checking the video description …"
+          }
+        }
+      }
+    },
+    "Vorb. %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prep %@"
+          }
+        }
+      }
+    },
+    "Vorbereitung": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prep time"
+          }
+        }
+      }
+    },
+    "Was ist zu tun?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What needs to be done?"
+          }
+        }
+      }
+    },
+    "Webseite": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Website"
+          }
+        }
+      }
+    },
+    "Wird auf dem iPhone ausgewertet": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Processed on the iPhone"
+          }
+        }
+      }
+    },
+    "Wird auf dem iPhone ausgewertet – kostenlos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Processed on the iPhone – free"
+          }
+        }
+      }
+    },
+    "Wird mit Mealie AI ausgewertet": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Processed with Mealie AI"
+          }
+        }
+      }
+    },
+    "YouTube ist gerade nicht erreichbar.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YouTube can't be reached right now."
+          }
+        }
+      }
+    },
+    "YouTube-Video": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YouTube video"
+          }
+        }
+      }
+    },
+    "Zubereitung": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Instructions"
+          }
+        }
+      }
+    },
+    "Zum Übersetzen wertet Mealie AI die Quelle aus, auch bei Webseiten.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "To translate, Mealie AI processes the source, even for websites."
+          }
+        }
+      }
+    },
+    "Zutat hinzufügen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add Ingredient"
+          }
+        }
+      }
+    },
+    "Zutaten": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ingredients"
+          }
+        }
+      }
+    },
+    "deinen Mealie-Server": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "your Mealie server"
+          }
+        }
+      }
+    },
+    "z. B. 10 Minuten": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "e.g. 10 minutes"
+          }
+        }
+      }
+    },
+    "z. B. 25 Minuten": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "e.g. 25 minutes"
+          }
+        }
+      }
+    },
+    "z. B. 250 g Mehl": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "e.g. 250 g flour"
+          }
+        }
+      }
+    },
+    "z. B. 35 Minuten": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "e.g. 35 minutes"
+          }
+        }
+      }
+    },
+    "z. B. 4": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "e.g. 4"
+          }
+        }
+      }
+    },
+    "„%@“ als neuen Tag anlegen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create “%@” as a new tag"
+          }
+        }
+      }
+    },
+    "„%@“ übernehmen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import “%@”"
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

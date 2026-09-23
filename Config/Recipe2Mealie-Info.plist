@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Feedback targets from Config/Base.xcconfig; empty hides them. -->
+	<key>GitHubRepository</key>
+	<string>$(GITHUB_REPOSITORY)</string>
+	<key>FeedbackEmail</key>
+	<string>$(FEEDBACK_EMAIL)</string>
+	<!-- From Config/Secrets.xcconfig, empty when not set. -->
+	<key>YouTubeAPIKey</key>
+	<string>$(YOUTUBE_API_KEY)</string>
+	<!-- Resolved at build time to <TeamID>.<APP_BUNDLE_ID_PREFIX>.shared -->
+	<key>KeychainAccessGroup</key>
+	<string>$(AppIdentifierPrefix)$(APP_BUNDLE_ID_PREFIX).shared</string>
+	<!-- Many Mealie servers run on the local network over plain HTTP. -->
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
+	</dict>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Damit die App deinen Mealie-Server im lokalen Netzwerk erreichen kann.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Damit du Rezepte aus Kochbüchern abfotografieren und Titelbilder aufnehmen kannst.</string>
+</dict>
+</plist>

@@ -1,0 +1,76 @@
+{
+  "sourceLanguage": "de",
+  "strings": {
+    "Diese Installation darf keine Daten mit der App teilen. Importiere bitte direkt in der App.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This installation isn't allowed to share data with the app. Please import directly in the app."
+          }
+        }
+      }
+    },
+    "In Mealie importieren": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import to Mealie"
+          }
+        }
+      }
+    },
+    "Nicht verbunden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Not Connected"
+          }
+        }
+      }
+    },
+    "Nichts zum Importieren": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nothing to Import"
+          }
+        }
+      }
+    },
+    "Schließen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close"
+          }
+        }
+      }
+    },
+    "Teile einen Link, Text oder Fotos mit einem Rezept.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share a link, text or photos with a recipe."
+          }
+        }
+      }
+    },
+    "Öffne zuerst die App „Recipe2Mealie“ und verbinde sie mit deinem Mealie-Server.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "First open the Recipe2Mealie app and connect it to your Mealie server."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

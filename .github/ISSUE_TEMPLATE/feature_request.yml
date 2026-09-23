@@ -1,0 +1,23 @@
+name: Idea / Idee vorschlagen
+description: Suggest something that would make the app better. / Schlag etwas vor, das die App besser macht.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea / Deine Idee
+      description: What would you like, and what would it help you with?
+    validations:
+      required: true
+  - type: input
+    id: app-version
+    attributes:
+      label: App version
+  - type: input
+    id: ios-version
+    attributes:
+      label: iOS version and device
+  - type: input
+    id: mealie-version
+    attributes:
+      label: Mealie version

@@ -1,0 +1,34 @@
+name: Bug report / Fehler melden
+description: Something doesn't work as expected. / Etwas funktioniert nicht wie erwartet.
+labels: [bug]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened? / Was ist passiert?
+      description: What did you do, what did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source / Quelle
+      description: The link or kind of source you imported, if it matters (e.g. a YouTube Short, a website, a photo).
+  - type: input
+    id: app-version
+    attributes:
+      label: App version
+  - type: input
+    id: ios-version
+    attributes:
+      label: iOS version and device
+  - type: input
+    id: mealie-version
+    attributes:
+      label: Mealie version
+  - type: textarea
+    id: log
+    attributes:
+      label: Log / Protokoll
+      description: Optional. Settings → Diagnostics → Create Log, then paste or attach it here.
+      render: text

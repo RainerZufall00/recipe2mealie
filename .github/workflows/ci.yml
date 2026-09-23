@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-and-test:
+    # Needs Xcode 27 (iOS 27 SDK). If the runner image doesn't have it yet, pick a newer image.
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select the newest Xcode
+        run: sudo xcode-select -s "$(ls -d /Applications/Xcode*.app | sort -V | tail -1)"
+
+      - name: Versions
+        run: xcodebuild -version
+
+      - name: Build app and share extension
+        run: |
+          xcodebuild -project Recipe2Mealie.xcodeproj -scheme Recipe2Mealie \
+            -destination 'generic/platform=iOS Simulator' \
+            CODE_SIGNING_ALLOWED=NO build
+
+      - name: Test MealieKit
+        working-directory: Packages/MealieKit
+        run: |
+          DEVICE=$(xcrun simctl list devices available | grep -m1 -oE 'iPhone [^(]+' | sed 's/ *$//')
+          echo "Testing on $DEVICE"
+          xcodebuild -scheme MealieKit -destination "platform=iOS Simulator,name=$DEVICE" test

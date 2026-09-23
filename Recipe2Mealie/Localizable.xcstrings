@@ -1,0 +1,896 @@
+{
+  "sourceLanguage": "de",
+  "strings": {
+    "API-Token": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "API Token"
+          }
+        }
+      }
+    },
+    "Abbrechen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel"
+          }
+        }
+      }
+    },
+    "Abmelden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign Out"
+          }
+        }
+      }
+    },
+    "Abmelden?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign Out?"
+          }
+        }
+      }
+    },
+    "Absturz": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crash"
+          }
+        }
+      }
+    },
+    "Absturzberichte": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Crash Reports"
+          }
+        }
+      }
+    },
+    "Allgemein": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "General"
+          }
+        }
+      }
+    },
+    "Angemeldet als": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Signed in as"
+          }
+        }
+      }
+    },
+    "Anmeldung": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sign-in"
+          }
+        }
+      }
+    },
+    "Auf %@ übersetzen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Translate to %@"
+          }
+        }
+      }
+    },
+    "Aus Videos, Webseiten, Fotos oder Text": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "From videos, websites, photos or text"
+          }
+        }
+      }
+    },
+    "Aus der Mediathek": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "From your library"
+          }
+        }
+      }
+    },
+    "Ausblenden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hide"
+          }
+        }
+      }
+    },
+    "Bei YouTube-Links liest die App Titel und Beschreibung über die YouTube-API-Dienste; dabei geht nur die Video-ID an Google. [YouTube-Nutzungsbedingungen](https://www.youtube.com/t/terms) · [Datenschutzerklärung von Google](https://policies.google.com/privacy)": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For YouTube links, the app reads the title and description through YouTube API Services; only the video ID is sent to Google. [YouTube Terms of Service](https://www.youtube.com/t/terms) · [Google Privacy Policy](https://policies.google.com/privacy)"
+          }
+        }
+      }
+    },
+    "Benutzername oder E-Mail": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Username or email"
+          }
+        }
+      }
+    },
+    "Danke, dass du hilfst, die App besser zu machen! Beschreib kurz, was passiert ist oder was du dir wünschst.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Thanks for helping to make the app better! Briefly describe what happened or what you'd like."
+          }
+        }
+      }
+    },
+    "Das Protokoll zeigt, was die App seit dem Start getan hat, etwa importierte Links und Fehlermeldungen – aber keine Passwörter, Tokens oder Server-Adresse.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The log shows what the app has done since it started, such as imported links and error messages – but no passwords, tokens or server address."
+          }
+        }
+      }
+    },
+    "Datenschutz": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privacy"
+          }
+        }
+      }
+    },
+    "Dein Passwort wird nicht gespeichert. Die App legt damit einen eigenen API-Token in Mealie an.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your password isn't stored. The app uses it to create its own API token in Mealie."
+          }
+        }
+      }
+    },
+    "Demo": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Demo"
+          }
+        }
+      }
+    },
+    "Demo beenden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "End Demo"
+          }
+        }
+      }
+    },
+    "Der API-Token wird von diesem Gerät entfernt. Deine Rezepte bleiben in Mealie.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The API token is removed from this device. Your recipes stay in Mealie."
+          }
+        }
+      }
+    },
+    "Der Server ist nicht erreichbar (%@). Stimmt die Adresse?": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The server can't be reached (%@). Is the address correct?"
+          }
+        }
+      }
+    },
+    "Diagnose": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnostics"
+          }
+        }
+      }
+    },
+    "Diagnose & Absturzberichte": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diagnostics & Crash Reports"
+          }
+        }
+      }
+    },
+    "Die App selbst sammelt keine Daten und nutzt keine Analyse- oder Werbedienste. Nur für die Vorschau fragt sie bei YouTube bzw. der Webseite Titel und Vorschaubild ab.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The app itself collects no data and uses no analytics or advertising services. Only for previews does it fetch the title and thumbnail from YouTube or the website."
+          }
+        }
+      }
+    },
+    "Diese Angaben werden mitgeschickt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "These details are included"
+          }
+        }
+      }
+    },
+    "E-Mail": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Email"
+          }
+        }
+      }
+    },
+    "E-Mail schreiben": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Write an Email"
+          }
+        }
+      }
+    },
+    "Einen API-Token erstellst du in Mealie unter **Profil → API-Tokens**. Er wird sicher im Schlüsselbund gespeichert.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create an API token in Mealie under **Profile → API Tokens**. It is stored securely in the keychain."
+          }
+        }
+      }
+    },
+    "Einstellungen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
+          }
+        }
+      }
+    },
+    "Enthält die Meldungen der App seit dem letzten Start: Importe, Fehler und Serverantworten. Keine Passwörter oder Tokens.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contains the app's messages since it was last started: imports, errors and server responses. No passwords or tokens."
+          }
+        }
+      }
+    },
+    "Erneut versuchen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try Again"
+          }
+        }
+      }
+    },
+    "Feedback geben": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Send Feedback"
+          }
+        }
+      }
+    },
+    "Fehler melden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Report a Bug"
+          }
+        }
+      }
+    },
+    "Fotos": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Photos"
+          }
+        }
+      }
+    },
+    "Fotos und Text auf dem iPhone verarbeiten": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Process photos and text on iPhone"
+          }
+        }
+      }
+    },
+    "Fotos und Texte wertet die App auf dem iPhone aus, wenn das oben eingeschaltet ist. Dein Mealie-Server bekommt dann nur das fertige Rezept.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "When turned on above, the app processes photos and text on your iPhone. Your Mealie server then only receives the finished recipe."
+          }
+        }
+      }
+    },
+    "Für Video-Importe braucht Mealie einen KI-Anbieter mit Audio-Transkription.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "For video imports, Mealie needs an AI provider with audio transcription."
+          }
+        }
+      }
+    },
+    "Hallo, %@": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Hello, %@"
+          }
+        }
+      }
+    },
+    "Haushalt": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Household"
+          }
+        }
+      }
+    },
+    "Hilfe": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Help"
+          }
+        }
+      }
+    },
+    "Idee vorschlagen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suggest an Idea"
+          }
+        }
+      }
+    },
+    "Importiere dein erstes Rezept im Tab „Importieren“.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import your first recipe in the “Import” tab."
+          }
+        }
+      }
+    },
+    "Importieren": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import"
+          }
+        }
+      }
+    },
+    "Importierte Rezepte erscheinen hier.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imported recipes appear here."
+          }
+        }
+      }
+    },
+    "KI in Mealie einrichten": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set Up AI in Mealie"
+          }
+        }
+      }
+    },
+    "Kamera": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Camera"
+          }
+        }
+      }
+    },
+    "Kategorien übernehmen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import categories"
+          }
+        }
+      }
+    },
+    "Keine Abstürze erfasst.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No crashes recorded."
+          }
+        }
+      }
+    },
+    "Keine Verbindung": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No Connection"
+          }
+        }
+      }
+    },
+    "Kochbuch scannen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scan a cookbook"
+          }
+        }
+      }
+    },
+    "Link": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Link"
+          }
+        }
+      }
+    },
+    "Link importieren": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import Link"
+          }
+        }
+      }
+    },
+    "Link zu einem Video (YouTube, Instagram, TikTok) oder einer Rezeptseite.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Link to a video (YouTube, Instagram, TikTok) or a recipe page."
+          }
+        }
+      }
+    },
+    "Links, Texte und Fotos gehen **nur an deinen Mealie-Server**. Für Videos lädt Mealie den Ton und transkribiert ihn mit dem KI-Dienst, den du in Mealie eingerichtet hast.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Links, text and photos go **only to your Mealie server**. For videos, Mealie downloads the audio and transcribes it with the AI service you set up in Mealie."
+          }
+        }
+      }
+    },
+    "Mealie im Browser öffnen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Open Mealie in Browser"
+          }
+        }
+      }
+    },
+    "Noch keine Importe": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No Imports Yet"
+          }
+        }
+      }
+    },
+    "Noch keine Rezepte": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No Recipes Yet"
+          }
+        }
+      }
+    },
+    "Noch schneller: direkt teilen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Even faster: share directly"
+          }
+        }
+      }
+    },
+    "Ohne Server ausprobieren": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try Without a Server"
+          }
+        }
+      }
+    },
+    "Passwort": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Password"
+          }
+        }
+      }
+    },
+    "Protokoll": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Log"
+          }
+        }
+      }
+    },
+    "Protokoll anhängen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Attach Log"
+          }
+        }
+      }
+    },
+    "Protokoll erstellen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Create Log"
+          }
+        }
+      }
+    },
+    "Protokoll teilen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share Log"
+          }
+        }
+      }
+    },
+    "Protokoll wird erstellt …": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Creating log …"
+          }
+        }
+      }
+    },
+    "Rezept einfügen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paste a recipe"
+          }
+        }
+      }
+    },
+    "Rezept importieren": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import Recipe"
+          }
+        }
+      }
+    },
+    "Rezepte": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recipes"
+          }
+        }
+      }
+    },
+    "Rezepte aus Videos, Webseiten, Fotos und Text mit einem Tipp in dein Mealie holen.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bring recipes from videos, websites, photos and text into your Mealie with a single tap."
+          }
+        }
+      }
+    },
+    "Rezepte durchsuchen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Search recipes"
+          }
+        }
+      }
+    },
+    "Rezepttext einfügen, z. B. aus einer Nachricht oder Videobeschreibung …": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paste recipe text, e.g. from a message or video description …"
+          }
+        }
+      }
+    },
+    "Schließen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Close"
+          }
+        }
+      }
+    },
+    "Startbildschirm": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Start Screen"
+          }
+        }
+      }
+    },
+    "Tags übernehmen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import tags"
+          }
+        }
+      }
+    },
+    "Teilen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Share"
+          }
+        }
+      }
+    },
+    "Teilen aus anderen Apps": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sharing from other apps"
+          }
+        }
+      }
+    },
+    "Text importieren": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import Text"
+          }
+        }
+      }
+    },
+    "Tippe in YouTube oder Instagram auf **Teilen** und wähle **Recipe2Mealie**. Falls die App fehlt: ganz rechts auf **Mehr** tippen und sie hinzufügen.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "In YouTube or Instagram, tap **Share** and choose **Recipe2Mealie**. If the app is missing, tap **More** at the far right and add it."
+          }
+        }
+      }
+    },
+    "Verbinden": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connect"
+          }
+        }
+      }
+    },
+    "Verbindung fehlgeschlagen": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Connection Failed"
+          }
+        }
+      }
+    },
+    "YouTube, Instagram, Web": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "YouTube, Instagram, web"
+          }
+        }
+      }
+    },
+    "Zuletzt importiert": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recently Imported"
+          }
+        }
+      }
+    },
+    "iOS liefert einen Bericht beim nächsten Start nach einem Absturz, manchmal mit etwas Verzögerung. Die Berichte bleiben auf dem Gerät, bis du sie teilst.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iOS delivers a report on the next launch after a crash, sometimes with a delay. Reports stay on the device until you share them."
+          }
+        }
+      }
+    },
+    "nicht verfügbar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "not available"
+          }
+        }
+      }
+    },
+    "verfügbar": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "available"
+          }
+        }
+      }
+    },
+    "Öffnet ein vorausgefülltes Formular auf GitHub. Du brauchst dafür ein kostenloses GitHub-Konto, die Meldung ist öffentlich sichtbar.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Opens a prefilled form on GitHub. You need a free GitHub account; the report is public."
+          }
+        }
+      }
+    },
+    "Übernimmt Schlagwörter der Quelle und legt fehlende Tags in Mealie an. Die Übersetzung erledigt Mealie AI, nachdem das Rezept erstellt wurde.": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imports the source's keywords and creates missing tags in Mealie. Mealie AI translates the recipe after it is created."
+          }
+        }
+      }
+    }
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,17 @@
+// Shared build settings for the app and the share extension.
+// Local values (signing team, own bundle ID, API keys) go into Secrets.xcconfig,
+// which is ignored by Git. Start with: cp Secrets.example.xcconfig Secrets.xcconfig
+
+// Bundle IDs and the shared keychain group are derived from this prefix.
+APP_BUNDLE_ID_PREFIX = de.recipe2mealie
+
+// Where feedback goes. Leave empty to hide the option in the app.
+// GITHUB_REPOSITORY is "owner/repo" (no URL: "//" starts a comment in xcconfig files).
+GITHUB_REPOSITORY = RainerZufall00/recipe2mealie
+FEEDBACK_EMAIL =
+
+// Empty unless set locally; Xcode then asks for a team when building for a device.
+DEVELOPMENT_TEAM =
+YOUTUBE_API_KEY =
+
+#include? "Secrets.xcconfig"

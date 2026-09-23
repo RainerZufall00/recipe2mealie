@@ -149,9 +149,9 @@ extension RecipeEditorView {
             name = recipe.name ?? ""
             description = recipe.description ?? ""
             servings = recipe.servings.map { RecipeFormat.servings($0) } ?? ""
-            prepTime = recipe.prepTime ?? ""
-            cookTime = recipe.cookTime ?? ""
-            totalTime = recipe.totalTime ?? ""
+            prepTime = Self.editableDuration(recipe.prepTime)
+            cookTime = Self.editableDuration(recipe.cookTime)
+            totalTime = Self.editableDuration(recipe.totalTime)
             ingredients = recipe.ingredients.map { TextItem(text: $0.text(), title: $0.title?.nilIfBlank) }
             steps = recipe.instructions.map { TextItem(text: $0.text, title: $0.title?.nilIfBlank) }
             notes = (recipe.notes ?? []).map { TextItem(text: $0.text ?? "", title: $0.title?.nilIfBlank) }
@@ -164,6 +164,17 @@ extension RecipeEditorView {
                 || prepTime != current.prepTime || cookTime != current.cookTime || totalTime != current.totalTime
                 || ingredients != current.ingredients || steps != current.steps || notes != current.notes
                 || tags != current.tags
+        }
+
+        /// ISO durations ("PT10M") are shown the way the recipe page shows them ("10 min").
+        static func editableDuration(_ raw: String?) -> String {
+            guard let raw = raw?.nilIfBlank else { return "" }
+            return raw.uppercased().hasPrefix("P") ? RecipeFormat.duration(raw) ?? raw : raw
+        }
+
+        /// An untouched time goes back unchanged, so saving doesn't rewrite ISO durations.
+        static func storedDuration(_ text: String, original: String?) -> String {
+            text == editableDuration(original) ? original ?? "" : text
         }
 
         /// Builds the patch, keeping structured ingredients (amount, unit, food) whenever their
@@ -184,9 +195,9 @@ extension RecipeEditorView {
                 name: name.trimmingCharacters(in: .whitespacesAndNewlines),
                 description: description,
                 recipeServings: Double(servings.replacingOccurrences(of: ",", with: ".")) ?? 0,
-                prepTime: prepTime,
-                cookTime: cookTime,
-                totalTime: totalTime,
+                prepTime: Self.storedDuration(prepTime, original: recipe.prepTime),
+                cookTime: Self.storedDuration(cookTime, original: recipe.cookTime),
+                totalTime: Self.storedDuration(totalTime, original: recipe.totalTime),
                 recipeIngredient: ingredientPayload,
                 recipeInstructions: steps.compactMap { item in
                     item.text.nilIfBlank.map { RecipeStep(id: nil, title: item.title, summary: nil, text: $0) }

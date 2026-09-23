@@ -112,5 +112,10 @@ Suggested order:
 7. Cookbook scan / photo import
 8. Editing a recipe
 
-Take them with real recipes and images (a Mealie server with a few nice recipes looks much better than the
-built-in demo data).
+Screens 1–6 and 8 come from the demo mode: launch with `-demo` (add `-AppleLanguages "(en)"` for English), import
+`https://youtube.com/shorts/demo` via *Link* and pick *Analyze the whole video* for the progress screen. Use the
+iPhone 18 Pro Max and iPad Pro 13-inch (M5) simulators; `xcrun simctl status_bar <device> override --time 9:41`
+cleans up the status bar, and on iPad set the simulator's system language too, since the date in the status bar
+follows it. Screen 7 needs a real device with a camera.
+
+The PNGs live in `docs/app-store/screenshots/<language>/<device>/`, which is git-ignored (about 34 MB).

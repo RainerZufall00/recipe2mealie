@@ -3,8 +3,8 @@ import os
 
 let log = Logger(subsystem: "de.recipe2mealie", category: "api")
 
-/// Everything the app needs from a Mealie server. Views depend on this protocol so previews
-/// and tests can use `PreviewMealieAPI` instead of a live server.
+/// Everything the app needs from a Mealie server. Views depend on this protocol so previews,
+/// tests and the demo mode can use `DemoMealieAPI` instead of a live server.
 public protocol MealieAPI: Sendable {
     var serverURL: URL { get }
 
@@ -23,6 +23,8 @@ public protocol MealieAPI: Sendable {
     func allTags() async throws -> [RecipeTag]
     func createTag(name: String) async throws -> RecipeTag
     func importRecipe(from source: ImportSource, options: ImportOptions) -> AsyncThrowingStream<ImportEvent, Error>
+    /// Where a recipe's cover image lives. Has a default for Mealie servers.
+    func imageURL(recipeID: String, cacheKey: String?, size: RecipeImageSize) -> URL
 }
 
 public enum RecipeImageSize: String, Sendable {

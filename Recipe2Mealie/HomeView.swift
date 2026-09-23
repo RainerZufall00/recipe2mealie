@@ -54,6 +54,8 @@ struct HomeView: View {
                         }
                     }
             }
+            // On iPad the default form sheet is too short for the description choices.
+            .presentationSizing(.page)
             .interactiveDismissDisabled(session.isRunning)
         }
         .sheet(isPresented: $showingLinkEntry) {
@@ -260,7 +262,7 @@ struct HomeView: View {
     }
 
     private func reloadHistory() {
-        history = ImportHistory.load()
+        history = account.isDemo ? DemoMealieAPI.importHistory : ImportHistory.load()
     }
 }
 

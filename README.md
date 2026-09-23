@@ -46,7 +46,7 @@
 
 ## Building
 
-You need Xcode 27. The project has no third-party dependencies.
+You need Xcode 26 or later. The project has no third-party dependencies.
 
 ```bash
 git clone https://github.com/RainerZufall00/recipe2mealie.git
@@ -104,3 +104,21 @@ use a different name and icon. *Mealie* is the name of an independent open-sourc
 trademark of Google LLC. This app uses YouTube API Services; see the
 [YouTube Terms of Service](https://www.youtube.com/t/terms) and the
 [Google Privacy Policy](https://policies.google.com/privacy).
+
+### Demo photos
+
+The demo mode ("Try without a server") uses eight photos from [Unsplash](https://unsplash.com), in
+`Packages/MealieKit/Sources/MealieKit/Resources/DemoImages/`. They are not covered by the MIT License but by the
+[Unsplash License](https://unsplash.com/license): free to use, but not to be sold unaltered or used to build a
+competing photo service.
+
+| Recipe | Photo by |
+|---|---|
+| Crispy Salmon with Zucchini Noodles | [Caroline Attwood](https://unsplash.com/photos/bpPTlXWTOvg) |
+| Shakshuka | [Yoav Aziz](https://unsplash.com/photos/422N7Nwq5XY) |
+| Thai Red Curry with Tofu | [iMattSmart](https://unsplash.com/photos/wgvbmn4d0Wk) |
+| One-Pot Tomato Pasta | [Aleksandra Tanasiienko](https://unsplash.com/photos/0y6eMd8vevA) |
+| Carnitas Tacos | [Frankie Lopez](https://unsplash.com/photos/_j4S4V2C8ew) |
+| Rainbow Buddha Bowl | [Mariana Medvedeva](https://unsplash.com/photos/fk6IiypMWss) |
+| Fluffy Blueberry Pancakes | [Adam Bartoszewicz](https://unsplash.com/photos/s8iYlK9ByQE) |
+| Banana Bread | [Cody Chan](https://unsplash.com/photos/a0fBbS8RZAo) |

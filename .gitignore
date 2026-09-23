@@ -9,3 +9,4 @@ xcuserdata/
 Packages/*/.build/
 Config/Secrets.xcconfig
 *.ipa
+docs/app-store/screenshots/

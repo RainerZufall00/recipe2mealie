@@ -363,20 +363,104 @@
     },
     "Fotos und Text auf dem iPhone verarbeiten": {
       "localizations": {
+        "de": {
+          "variations": {
+            "device": {
+              "ipad": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Fotos und Text auf dem iPad verarbeiten"
+                }
+              },
+              "iphone": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Fotos und Text auf dem iPhone verarbeiten"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Fotos und Text auf dem iPhone verarbeiten"
+                }
+              }
+            }
+          }
+        },
         "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Process photos and text on iPhone"
+          "variations": {
+            "device": {
+              "ipad": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Process photos and text on iPad"
+                }
+              },
+              "iphone": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Process photos and text on iPhone"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Process photos and text on iPhone"
+                }
+              }
+            }
           }
         }
       }
     },
     "Fotos und Texte wertet die App auf dem iPhone aus, wenn das oben eingeschaltet ist. Dein Mealie-Server bekommt dann nur das fertige Rezept.": {
       "localizations": {
+        "de": {
+          "variations": {
+            "device": {
+              "ipad": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Fotos und Texte wertet die App auf dem iPad aus, wenn das oben eingeschaltet ist. Dein Mealie-Server bekommt dann nur das fertige Rezept."
+                }
+              },
+              "iphone": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Fotos und Texte wertet die App auf dem iPhone aus, wenn das oben eingeschaltet ist. Dein Mealie-Server bekommt dann nur das fertige Rezept."
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Fotos und Texte wertet die App auf dem iPhone aus, wenn das oben eingeschaltet ist. Dein Mealie-Server bekommt dann nur das fertige Rezept."
+                }
+              }
+            }
+          }
+        },
         "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "When turned on above, the app processes photos and text on your iPhone. Your Mealie server then only receives the finished recipe."
+          "variations": {
+            "device": {
+              "ipad": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "When turned on above, the app processes photos and text on your iPad. Your Mealie server then only receives the finished recipe."
+                }
+              },
+              "iphone": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "When turned on above, the app processes photos and text on your iPhone. Your Mealie server then only receives the finished recipe."
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "When turned on above, the app processes photos and text on your iPhone. Your Mealie server then only receives the finished recipe."
+                }
+              }
+            }
           }
         }
       }

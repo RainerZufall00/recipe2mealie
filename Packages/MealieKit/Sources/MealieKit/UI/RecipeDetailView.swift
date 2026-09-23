@@ -63,6 +63,8 @@ public struct RecipeDetailView: View {
                     checkedIngredients = []
                     doneSteps = []
                 }
+                // A long form; on iPad the default form sheet cuts most of it off.
+                .presentationSizing(.page)
             }
         }
     }

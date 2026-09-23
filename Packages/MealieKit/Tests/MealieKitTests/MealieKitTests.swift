@@ -58,6 +58,15 @@ struct FormattingTests {
         #expect(RecipeFormat.duration(nil) == nil)
     }
 
+    @Test func editorShowsIsoTimesReadablyAndKeepsThemWhenUntouched() {
+        typealias Draft = RecipeEditorView.Draft
+        let shown = Draft.editableDuration("PT10M")
+        #expect(shown == RecipeFormat.duration("PT10M"))
+        #expect(Draft.storedDuration(shown, original: "PT10M") == "PT10M")
+        #expect(Draft.storedDuration("15 min", original: "PT10M") == "15 min")
+        #expect(Draft.editableDuration("über Nacht") == "über Nacht")
+    }
+
     @Test func quantities() {
         #expect(RecipeFormat.quantity(0.5) == "½")
         #expect(RecipeFormat.quantity(1.5) == "1½")

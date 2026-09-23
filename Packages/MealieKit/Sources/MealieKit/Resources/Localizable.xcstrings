@@ -113,10 +113,52 @@
     },
     "Auf dem iPhone verarbeiten": {
       "localizations": {
+        "de": {
+          "variations": {
+            "device": {
+              "ipad": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Auf dem iPad verarbeiten"
+                }
+              },
+              "iphone": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Auf dem iPhone verarbeiten"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Auf dem iPhone verarbeiten"
+                }
+              }
+            }
+          }
+        },
         "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Process on iPhone"
+          "variations": {
+            "device": {
+              "ipad": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Process on iPad"
+                }
+              },
+              "iphone": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Process on iPhone"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Process on iPhone"
+                }
+              }
+            }
           }
         }
       }
@@ -313,10 +355,52 @@
     },
     "Die Auswertung passiert auf deinem iPhone. An %@ geht erst das fertige Rezept.": {
       "localizations": {
+        "de": {
+          "variations": {
+            "device": {
+              "ipad": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Die Auswertung passiert auf deinem iPad. An %@ geht erst das fertige Rezept."
+                }
+              },
+              "iphone": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Die Auswertung passiert auf deinem iPhone. An %@ geht erst das fertige Rezept."
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Die Auswertung passiert auf deinem iPhone. An %@ geht erst das fertige Rezept."
+                }
+              }
+            }
+          }
+        },
         "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Processing happens on your iPhone. Only the finished recipe is sent to %@."
+          "variations": {
+            "device": {
+              "ipad": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Processing happens on your iPad. Only the finished recipe is sent to %@."
+                }
+              },
+              "iphone": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Processing happens on your iPhone. Only the finished recipe is sent to %@."
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Processing happens on your iPhone. Only the finished recipe is sent to %@."
+                }
+              }
+            }
           }
         }
       }
@@ -783,10 +867,52 @@
     },
     "Rezept wird auf dem iPhone erstellt": {
       "localizations": {
+        "de": {
+          "variations": {
+            "device": {
+              "ipad": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Rezept wird auf dem iPad erstellt"
+                }
+              },
+              "iphone": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Rezept wird auf dem iPhone erstellt"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Rezept wird auf dem iPhone erstellt"
+                }
+              }
+            }
+          }
+        },
         "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Creating the recipe on the iPhone"
+          "variations": {
+            "device": {
+              "ipad": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Creating the recipe on the iPad"
+                }
+              },
+              "iphone": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Creating the recipe on the iPhone"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Creating the recipe on the iPhone"
+                }
+              }
+            }
           }
         }
       }
@@ -1133,20 +1259,104 @@
     },
     "Wird auf dem iPhone ausgewertet": {
       "localizations": {
+        "de": {
+          "variations": {
+            "device": {
+              "ipad": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Wird auf dem iPad ausgewertet"
+                }
+              },
+              "iphone": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Wird auf dem iPhone ausgewertet"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Wird auf dem iPhone ausgewertet"
+                }
+              }
+            }
+          }
+        },
         "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Processed on the iPhone"
+          "variations": {
+            "device": {
+              "ipad": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Processed on the iPad"
+                }
+              },
+              "iphone": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Processed on the iPhone"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Processed on the iPhone"
+                }
+              }
+            }
           }
         }
       }
     },
     "Wird auf dem iPhone ausgewertet – kostenlos": {
       "localizations": {
+        "de": {
+          "variations": {
+            "device": {
+              "ipad": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Wird auf dem iPad ausgewertet – kostenlos"
+                }
+              },
+              "iphone": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Wird auf dem iPhone ausgewertet – kostenlos"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Wird auf dem iPhone ausgewertet – kostenlos"
+                }
+              }
+            }
+          }
+        },
         "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Processed on the iPhone – free"
+          "variations": {
+            "device": {
+              "ipad": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Processed on the iPad – free"
+                }
+              },
+              "iphone": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Processed on the iPhone – free"
+                }
+              },
+              "other": {
+                "stringUnit": {
+                  "state": "translated",
+                  "value": "Processed on the iPhone – free"
+                }
+              }
+            }
           }
         }
       }

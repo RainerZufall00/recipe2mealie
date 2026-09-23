@@ -32,7 +32,7 @@
 - [ ] Texts in German and English from `listing.md` (run `python3 docs/app-store/check-lengths.py`).
 - [ ] App Privacy: *Data Not Collected*. Privacy Policy URL from GitHub Pages.
 - [ ] Age rating questionnaire (all "no" → 4+).
-- [ ] Screenshots: iPhone 6.9" and iPad 13", German and English.
+- [ ] Screenshots: iPhone 6.9" and iPad 13", German and English (taken from the demo, see `listing.md`).
 - [ ] App Review information: notes from `review-notes.md`, test server credentials, contact details.
 
 ## Build

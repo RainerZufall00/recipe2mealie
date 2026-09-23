@@ -112,7 +112,7 @@ public struct ImportFlowView: View {
                 }
                 if canRunLocally {
                     Toggle(isOn: $account.importOptions.preferLocalAI) {
-                        Label(L("Auf dem iPhone verarbeiten"), systemImage: "iphone.gen3")
+                        Label(L("Auf dem iPhone verarbeiten"), systemImage: DeviceCapabilities.deviceSymbol)
                     }
                 }
                 Toggle(isOn: $account.importOptions.translates) {

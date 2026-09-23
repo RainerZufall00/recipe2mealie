@@ -46,6 +46,11 @@ public final class ImportSession: Identifiable {
         self.api = api
         guard case .link(let url) = source else { return }
 
+        if let demo = api as? DemoMealieAPI {
+            loadDemoDetails(for: url, from: demo)
+            return
+        }
+
         Task { [weak self] in
             let preview = await LinkPreview.load(for: url)
             self?.preview = preview
@@ -70,6 +75,22 @@ public final class ImportSession: Identifiable {
                 }
                 self?.isCheckingDescription = false
             }
+        }
+    }
+
+    /// The demo shows the same preview and description choices, but offline.
+    private func loadDemoDetails(for url: URL, from demo: DemoMealieAPI) {
+        isCheckingDescription = demo.videoInfo(for: url) != nil
+        Task { [weak self] in
+            try? await Task.sleep(for: .milliseconds(400))
+            self?.preview = demo.preview(for: url)
+            try? await Task.sleep(for: .milliseconds(800))
+            if let found = demo.findings(for: url) {
+                self?.videoInfo = demo.videoInfo(for: url)
+                self?.findings = found.findings
+                self?.recipeLinkName = found.recipeLinkName
+            }
+            self?.isCheckingDescription = false
         }
     }
 
@@ -266,6 +287,7 @@ public final class ImportSession: Identifiable {
         log.notice("Import finished: \(recipe.slug, privacy: .public), \(recipe.ingredients.count) ingredients, \(recipe.instructions.count) steps")
         if let last = steps.indices.last { steps[last].state = .done }
         phase = .succeeded(recipe)
+        guard !(api is DemoMealieAPI) else { return } // the demo keeps the real history untouched
         ImportHistory.add(ImportRecord(
             slug: recipe.slug,
             name: recipe.displayName,

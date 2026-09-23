@@ -17,6 +17,11 @@ public enum DeviceCapabilities {
     public static var canScanDocuments: Bool {
         !isAppExtension && VNDocumentCameraViewController.isSupported
     }
+
+    /// SF Symbol for "on this device". The wording itself varies by device in the String Catalogs.
+    public static var deviceSymbol: String {
+        UIDevice.current.userInterfaceIdiom == .pad ? "ipad" : "iphone.gen3"
+    }
 }
 
 /// One photo from the camera.

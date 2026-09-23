@@ -55,7 +55,7 @@ struct SettingsView: View {
                     Label {
                         Text("Fotos und Texte wertet die App auf dem iPhone aus, wenn das oben eingeschaltet ist. Dein Mealie-Server bekommt dann nur das fertige Rezept.")
                     } icon: {
-                        Image(systemName: "iphone.gen3").foregroundStyle(.brand)
+                        Image(systemName: DeviceCapabilities.deviceSymbol).foregroundStyle(.brand)
                     }
                     Label {
                         Text("Links, Texte und Fotos gehen **nur an deinen Mealie-Server**. Für Videos lädt Mealie den Ton und transkribiert ihn mit dem KI-Dienst, den du in Mealie eingerichtet hast.")

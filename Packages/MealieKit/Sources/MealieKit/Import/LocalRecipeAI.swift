@@ -116,7 +116,7 @@ public enum LocalRecipeAI {
         do {
             let response = try await session.respond(to: prompt,
                                                      generating: Extraction.self,
-                                                     options: GenerationOptions(samplingMode: .greedy))
+                                                     options: greedyOptions)
             return recipe(from: response.content)
         } catch let error as LanguageModelSession.GenerationError {
             throw LocalAIError.generation(error)
@@ -142,8 +142,18 @@ public enum LocalRecipeAI {
             instructions: "You turn recipe titles into the plain name of the dish. Use only words from the title.")
         let result = try await session.respond(to: "Title: \(title)",
                                                generating: DishName.self,
-                                               options: GenerationOptions(samplingMode: .greedy)).content
+                                               options: greedyOptions).content
         return result.dish.nilIfBlank ?? title
+    }
+
+    /// Deterministic output. The initializer was renamed in the iOS 27 SDK (Xcode 27, Swift 6.4);
+    /// the check keeps the project building with Xcode 26 too.
+    private static var greedyOptions: GenerationOptions {
+        #if compiler(>=6.4)
+        GenerationOptions(samplingMode: .greedy)
+        #else
+        GenerationOptions(sampling: .greedy)
+        #endif
     }
 
     /// Keeps the prompt inside the on-device context window; a recipe rarely needs more.

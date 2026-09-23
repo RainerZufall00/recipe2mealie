@@ -7,10 +7,10 @@ on:
 
 jobs:
   build-and-test:
-    # Needs Xcode 27 (iOS 27 SDK). If the runner image doesn't have it yet, pick a newer image.
+    # Builds with Xcode 26 and 27.
     runs-on: macos-26
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Select the newest Xcode
         run: sudo xcode-select -s "$(ls -d /Applications/Xcode*.app | sort -V | tail -1)"

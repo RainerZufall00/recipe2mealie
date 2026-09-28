@@ -44,65 +44,30 @@
 - For video imports: an [AI provider with audio transcription](https://docs.mealie.io/documentation/getting-started/installation/ai-providers/) configured in Mealie
 - For on-device processing: a device that supports Apple Intelligence
 
-## Building
+## Get the app
 
-You need Xcode 26 or later. The project has no third-party dependencies.
+Recipe2Mealie is coming to the App Store. Until then, a TestFlight beta will be linked here.
 
-```bash
-git clone https://github.com/RainerZufall00/recipe2mealie.git
-cd recipe2mealie
-cp Config/Secrets.example.xcconfig Config/Secrets.xcconfig
-open Recipe2Mealie.xcodeproj
-```
+1. Install the app and open it.
+2. Enter your Mealie server address and sign in with your Mealie account or an API token.
+3. Share a video, website or photo to **Recipe2Mealie** from any app, or use the import screen in the app.
 
-In `Config/Secrets.xcconfig` set:
+Just curious? Tap *Try without a server* to explore the app with built-in sample recipes.
 
-- `DEVELOPMENT_TEAM` – your Apple team ID, needed to run on a device
-- `APP_BUNDLE_ID_PREFIX` – forks should use their own prefix, bundle IDs are unique per account
-- `YOUTUBE_API_KEY` – optional, a YouTube Data API v3 key for the description check. Restrict it to your bundle
-  IDs and to the YouTube Data API. Without a key, YouTube links go straight to Mealie.
+## Privacy
 
-Where in-app feedback goes is set in `Config/Base.xcconfig` (public, committed): `GITHUB_REPOSITORY` as
-`owner/repo` for prefilled issue forms and `FEEDBACK_EMAIL`. Leave them empty to hide the feedback screen.
+The app has no accounts, analytics or tracking. It talks only to your Mealie server and, for YouTube links,
+to the YouTube Data API. Details: [Privacy Policy](https://rainerzufall00.github.io/recipe2mealie/privacy).
 
-`Secrets.xcconfig` is ignored by Git. The simulator build works without any of these values; launch with the argument
-`-demo` (or tap *Try without a server*) to use built-in sample recipes.
+## Feedback
 
-### Releases
-
-TestFlight and App Store builds are made by [Xcode Cloud](https://developer.apple.com/xcode-cloud/), no local
-archive needed. The workflow lives in App Store Connect (manifest in `Recipe2Mealie.xcodeproj/xcshareddata/xcodecloud/`).
-Because `Secrets.xcconfig` is not in Git, `ci_scripts/ci_post_clone.sh` creates it in the cloud: the team ID comes
-from Xcode Cloud, the YouTube key from the secret environment variable `YOUTUBE_API_KEY` of the workflow.
-Xcode Cloud also sets the build number, so only `MARKETING_VERSION` needs bumping for a new version.
-
-### Tests
-
-```bash
-cd Packages/MealieKit
-xcodebuild -scheme MealieKit -destination 'platform=iOS Simulator,name=iPhone 18 Pro' test
-```
-
-## Project structure
-
-| Folder | Contents |
-|---|---|
-| `Recipe2Mealie/` | App target: import home screen, recipe list, settings, sign-in, diagnostics |
-| `ShareExtension/` | Share extension: takes links, text and photos from the share sheet |
-| `Packages/MealieKit/` | Shared Swift package: Mealie API client, import flow, on-device AI, recipe views |
-| `Config/` | Build settings, entitlements and Info.plist files |
-| `ci_scripts/` | Xcode Cloud scripts |
-| `docs/` | Privacy policy, App Store material, and the original (German) concept documents |
-
-Translations live in String Catalogs: `Recipe2Mealie/Localizable.xcstrings`,
-`ShareExtension/Localizable.xcstrings` and `Packages/MealieKit/Sources/MealieKit/Resources/Localizable.xcstrings`.
-Strings inside the package go through `L("…")` so they are looked up in the package's own catalog.
+Found a bug or have an idea? [Open an issue](https://github.com/RainerZufall00/recipe2mealie/issues/new/choose)
+or use *Feedback* in the app's settings.
 
 ## Contributing
 
-Issues and pull requests are welcome. Please keep the app free of third-party dependencies, trackers and
-analytics, and run the tests before opening a pull request. New user-facing text needs a German and an English
-entry in the matching String Catalog.
+The app is open source. Issues and pull requests are welcome – see [CONTRIBUTING.md](CONTRIBUTING.md) for how to
+build it and how the project is structured.
 
 ## License
 

@@ -68,6 +68,14 @@ Where in-app feedback goes is set in `Config/Base.xcconfig` (public, committed):
 `Secrets.xcconfig` is ignored by Git. The simulator build works without any of these values; launch with the argument
 `-demo` (or tap *Try without a server*) to use built-in sample recipes.
 
+### Releases
+
+TestFlight and App Store builds are made by [Xcode Cloud](https://developer.apple.com/xcode-cloud/), no local
+archive needed. The workflow lives in App Store Connect (manifest in `Recipe2Mealie.xcodeproj/xcshareddata/xcodecloud/`).
+Because `Secrets.xcconfig` is not in Git, `ci_scripts/ci_post_clone.sh` creates it in the cloud: the team ID comes
+from Xcode Cloud, the YouTube key from the secret environment variable `YOUTUBE_API_KEY` of the workflow.
+Xcode Cloud also sets the build number, so only `MARKETING_VERSION` needs bumping for a new version.
+
 ### Tests
 
 ```bash
@@ -83,6 +91,7 @@ xcodebuild -scheme MealieKit -destination 'platform=iOS Simulator,name=iPhone 18
 | `ShareExtension/` | Share extension: takes links, text and photos from the share sheet |
 | `Packages/MealieKit/` | Shared Swift package: Mealie API client, import flow, on-device AI, recipe views |
 | `Config/` | Build settings, entitlements and Info.plist files |
+| `ci_scripts/` | Xcode Cloud scripts |
 | `docs/` | Privacy policy, App Store material, and the original (German) concept documents |
 
 Translations live in String Catalogs: `Recipe2Mealie/Localizable.xcstrings`,

@@ -14,8 +14,8 @@
 
 ## Apple Developer Program
 
-- [ ] Enroll (individual or organization) and wait for approval.
-- [ ] Put the new team ID into `Config/Secrets.xcconfig` (`DEVELOPMENT_TEAM`).
+- [x] Enroll (individual or organization) and wait for approval.
+- [x] Put the new team ID into `Config/Secrets.xcconfig` (`DEVELOPMENT_TEAM`).
 - [ ] App Store Connect → Business: decide on EU trader status. A free app without in-app purchases can usually be
       offered as a non-trader.
 
@@ -35,11 +35,15 @@
 - [ ] Screenshots: iPhone 6.9" and iPad 13", German and English (taken from the demo, see `listing.md`).
 - [ ] App Review information: notes from `review-notes.md`, test server credentials, contact details.
 
-## Build
+## Build (Xcode Cloud)
 
-- [ ] Bump `MARKETING_VERSION` / `CURRENT_PROJECT_VERSION` if needed.
+- [ ] Xcode → Integrate → Create Workflow: start condition *branch changes* on `main` (or manual start),
+      action *Archive – iOS*, post-action *TestFlight Internal Testing*. Grant access to the GitHub repository.
+- [ ] Workflow → Environment → add `YOUTUBE_API_KEY` as a **secret** environment variable
+      (`ci_scripts/ci_post_clone.sh` writes it into `Secrets.xcconfig`).
+- [ ] Bump `MARKETING_VERSION` for a new version. The build number is set by Xcode Cloud.
 - [ ] Test on a real device: share extension from YouTube/Instagram/Safari, camera scan, on-device processing,
       YouTube description check, editing, cover images, German and English.
-- [ ] Xcode → Product → Archive → Distribute App → App Store Connect.
+- [ ] Push to `main` → Xcode Cloud archives and uploads the build to TestFlight.
 - [ ] TestFlight: internal testing first, then a small external group (needs a short beta review).
 - [ ] Submit for review.

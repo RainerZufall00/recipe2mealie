@@ -1,6 +1,6 @@
 # Privacy Policy / Datenschutzerklärung – Recipe2Mealie
 
-*Last updated / Stand: 23 September 2026*
+*Last updated / Stand: 29 September 2026*
 
 [English](#english) · [Deutsch](#deutsch)
 
@@ -52,6 +52,10 @@ finished recipe is saved to your Mealie server.
   share them yourself.
 
 Deleting the app removes this data. Signing out removes the token.
+
+If you turn on "Save to iCloud Keychain", the server address and API token are also saved in your iCloud
+Keychain, so your other devices can connect without entering them again. iCloud Keychain is end-to-end
+encrypted by Apple; the developer has no access to it. Turning the option off removes the copy from iCloud.
 
 ### Permissions
 - **Camera** – to scan cookbook pages and take cover photos. Only used when you open the camera.
@@ -113,6 +117,11 @@ nur das fertige Rezept wird in deinem Mealie-Server gespeichert.
   sie selbst teilst.
 
 Beim Löschen der App werden diese Daten entfernt. Beim Abmelden wird der Token gelöscht.
+
+Schaltest du „Im iCloud-Schlüsselbund sichern“ ein, werden Server-Adresse und API-Token zusätzlich in deinem
+iCloud-Schlüsselbund gespeichert, damit sich deine anderen Geräte ohne erneute Eingabe verbinden können. Der
+iCloud-Schlüsselbund ist von Apple Ende-zu-Ende-verschlüsselt; der Entwickler hat keinen Zugriff darauf.
+Schaltest du die Option aus, wird die Kopie aus iCloud gelöscht.
 
 ### Berechtigungen
 - **Kamera** – zum Scannen von Kochbuchseiten und für Titelbilder. Nur aktiv, wenn du die Kamera öffnest.

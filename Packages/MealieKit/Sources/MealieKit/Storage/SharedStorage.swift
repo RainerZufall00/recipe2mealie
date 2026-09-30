@@ -23,8 +23,11 @@ public enum AppGroup {
 /// target in Info.plist so the team prefix is filled in at build time.
 public struct KeychainStore: Sendable {
     public static let shared = KeychainStore(service: "de.recipe2mealie.token")
+    /// Items in here sync to the user's other devices through iCloud Keychain.
+    public static let iCloud = KeychainStore(service: "de.recipe2mealie.token", synchronizable: true)
 
     let service: String
+    var synchronizable = false
 
     /// The shared access group, or nil when this build can't share (e.g. unsigned builds).
     public static var sharedGroup: String? {
@@ -76,6 +79,8 @@ public struct KeychainStore: Sendable {
             kSecAttrAccount as String: account
         ]
         if let accessGroup { query[kSecAttrAccessGroup as String] = accessGroup }
+        // Without this attribute queries only match items that stay on this device.
+        if synchronizable { query[kSecAttrSynchronizable as String] = kCFBooleanTrue }
         return query
     }
 }

@@ -46,6 +46,7 @@ public final class MealieAccount {
                 KeychainStore.shared.delete(account: Self.tokenAccount)
             }
         }
+        refreshICloudLogin()
     }
 
     /// For previews and tests.
@@ -56,6 +57,47 @@ public final class MealieAccount {
     }
 
     public private(set) var isDemo = false
+
+    /// A login saved to iCloud Keychain, by this device or another one.
+    public struct ICloudLogin: Hashable, Sendable {
+        public var server: URL
+        public var user: MealieUser?
+        /// Whether this device is signed in with it.
+        public var isCurrent: Bool
+    }
+
+    /// The login in iCloud Keychain, if any. Call `refreshICloudLogin()` to pick up changes
+    /// synced from other devices.
+    public private(set) var iCloudLogin: ICloudLogin?
+
+    public var isSavedToICloud: Bool { iCloudLogin?.isCurrent == true }
+
+    public func refreshICloudLogin() {
+        guard let saved = Self.loadLogin(from: .iCloud) else {
+            iCloudLogin = nil
+            return
+        }
+        let current = isDemo ? nil : Self.loadLogin()
+        iCloudLogin = ICloudLogin(server: saved.server, user: saved.user,
+                                  isCurrent: current?.server == saved.server && current?.token == saved.token)
+    }
+
+    /// Saves this device's login to iCloud Keychain, replacing any saved one, or removes it
+    /// from iCloud Keychain on all devices.
+    public func setSavedToICloud(_ save: Bool) {
+        if save {
+            if let login = Self.loadLogin(), !isDemo { Self.saveLogin(login, to: .iCloud) }
+        } else {
+            KeychainStore.iCloud.delete(account: Self.loginAccount)
+        }
+        refreshICloudLogin()
+    }
+
+    /// Signs in with the login saved in iCloud Keychain.
+    public func signInFromICloud() async throws {
+        guard let saved = Self.loadLogin(from: .iCloud) else { throw MealieError.unauthorized }
+        try await finishSignIn(serverURL: saved.server, token: saved.token)
+    }
 
     /// Try the app without a server. Nothing is stored.
     public func startDemo() {
@@ -96,6 +138,8 @@ public final class MealieAccount {
         api = nil
         user = nil
         isDemo = false
+        // The copy in iCloud Keychain stays, so the other devices remain signed in.
+        refreshICloudLogin()
     }
 
     public func webURL(forRecipe slug: String) -> URL? {
@@ -109,17 +153,19 @@ public final class MealieAccount {
         Self.saveLogin(StoredLogin(server: serverURL, token: token, user: user))
         AppGroup.defaults.set(serverURL, forKey: Self.serverKey)
         api = client
+        isDemo = false
+        refreshICloudLogin()
         setUser(user)
     }
 
-    private static func loadLogin() -> StoredLogin? {
-        guard let json = KeychainStore.shared.read(account: loginAccount) else { return nil }
+    private static func loadLogin(from store: KeychainStore = .shared) -> StoredLogin? {
+        guard let json = store.read(account: loginAccount) else { return nil }
         return try? JSONDecoder().decode(StoredLogin.self, from: Data(json.utf8))
     }
 
-    private static func saveLogin(_ login: StoredLogin) {
+    private static func saveLogin(_ login: StoredLogin, to store: KeychainStore = .shared) {
         guard let data = try? JSONEncoder().encode(login) else { return }
-        KeychainStore.shared.save(String(decoding: data, as: UTF8.self), account: loginAccount)
+        store.save(String(decoding: data, as: UTF8.self), account: loginAccount)
     }
 
     private func setUser(_ user: MealieUser) {
@@ -128,6 +174,7 @@ public final class MealieAccount {
         if var login = Self.loadLogin() {
             login.user = user
             Self.saveLogin(login)
+            if isSavedToICloud { Self.saveLogin(login, to: .iCloud) }
         }
     }
 

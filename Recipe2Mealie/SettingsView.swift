@@ -10,7 +10,7 @@ struct SettingsView: View {
         @Bindable var account = account
         NavigationStack {
             Form {
-                Section("Mealie") {
+                Section {
                     LabeledContent("Server", value: account.isDemo ? String(localized: "Demo") : account.serverURL?.host() ?? "–")
                     if let user = account.user {
                         LabeledContent("Angemeldet als", value: user.displayName)
@@ -22,6 +22,18 @@ struct SettingsView: View {
                         Link(destination: url) {
                             Label("Mealie im Browser öffnen", systemImage: "safari")
                         }
+                    }
+                    if !account.isDemo {
+                        Toggle("Im iCloud-Schlüsselbund sichern", isOn: Binding(
+                            get: { account.isSavedToICloud },
+                            set: { account.setSavedToICloud($0) }
+                        ))
+                    }
+                } header: {
+                    Text("Mealie")
+                } footer: {
+                    if !account.isDemo {
+                        iCloudFooter
                     }
                 }
 
@@ -109,11 +121,27 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Einstellungen")
+            .task { account.refreshICloudLogin() }
             .confirmationDialog("Abmelden?", isPresented: $confirmingSignOut, titleVisibility: .visible) {
                 Button("Abmelden", role: .destructive) { account.signOut() }
             } message: {
-                Text("Der API-Token wird von diesem Gerät entfernt. Deine Rezepte bleiben in Mealie.")
+                if account.isSavedToICloud {
+                    Text("Der API-Token wird von diesem Gerät entfernt, bleibt aber im iCloud-Schlüsselbund. Deine Rezepte bleiben in Mealie.")
+                } else {
+                    Text("Der API-Token wird von diesem Gerät entfernt. Deine Rezepte bleiben in Mealie.")
+                }
             }
+        }
+    }
+
+    @ViewBuilder
+    private var iCloudFooter: some View {
+        if let saved = account.iCloudLogin, !saved.isCurrent {
+            Text("Im iCloud-Schlüsselbund ist bereits der Server \(saved.server.host() ?? saved.server.absoluteString) gesichert. Einschalten ersetzt ihn.")
+        } else if account.isSavedToICloud {
+            Text("Server und API-Token sind in deinem iCloud-Schlüsselbund gesichert. Ausschalten löscht sie aus iCloud; bereits verbundene Geräte bleiben angemeldet.")
+        } else {
+            Text("Sichert Server und API-Token Ende-zu-Ende-verschlüsselt im iCloud-Schlüsselbund, damit du deine anderen Geräte ohne erneute Eingabe verbinden kannst.")
         }
     }
 

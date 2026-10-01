@@ -27,6 +27,7 @@ struct WelcomeView: View {
     @State private var saveToICloud = false
     @State private var isConnecting = false
     @State private var error: String?
+    @State private var formWidth: CGFloat = 0
 
     var body: some View {
         NavigationStack {
@@ -138,8 +139,9 @@ struct WelcomeView: View {
                 }
                 .listRowBackground(Color.clear)
             }
-            .frame(maxWidth: 560)
-            .frame(maxWidth: .infinity)
+            // Keep the form readable on iPad while it, and its scroll bar, span the whole screen.
+            .contentMargins(.horizontal, formWidth > 600 ? (formWidth - 560) / 2 : nil, for: .scrollContent)
+            .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { formWidth = $0 }
             .task { account.refreshICloudLogin() }
             .onChange(of: scenePhase) { _, phase in
                 // iCloud Keychain may sync the login while the app is in the background.
@@ -162,6 +164,8 @@ struct WelcomeView: View {
     }
 
     private func connect() async {
+        // Signing in replaces this view, so read its state before that happens.
+        let saveToICloud = saveToICloud
         isConnecting = true
         defer { isConnecting = false }
         do {
@@ -170,6 +174,8 @@ struct WelcomeView: View {
             case .token: try await account.signIn(server: server, apiToken: token)
             case .password: try await account.signIn(server: server, username: username, password: password)
             }
+            // Empty the secure fields before the view goes away, so iOS doesn't offer to save them.
+            token = ""
             password = ""
             if saveToICloud { account.setSavedToICloud(true) }
         } catch let urlError as URLError {

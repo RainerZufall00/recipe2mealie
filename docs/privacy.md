@@ -12,9 +12,8 @@ Recipe2Mealie is an app that imports recipes into a [Mealie](https://mealie.io) 
 access to. The developer does not run any servers for the app and does not collect any data about you.
 
 ### Responsible
-[NAME]
-[ADDRESS]
-Email: [EMAIL]
+Matthias Müller
+Email: feedback@mueller.ad
 
 ### What the app does not do
 - No user account with the developer, no analytics, no advertising, no tracking.
@@ -76,9 +75,8 @@ Recipe2Mealie ist eine App, die Rezepte in einen [Mealie](https://mealie.io)-Ser
 betreibst oder nutzt. Der Entwickler betreibt keine Server für die App und erhebt keine Daten über dich.
 
 ### Verantwortlich
-[NAME]
-[ANSCHRIFT]
-E-Mail: [E-MAIL]
+Matthias Müller
+E-Mail: feedback@mueller.ad
 
 ### Was die App nicht tut
 - Kein Konto beim Entwickler, keine Analyse, keine Werbung, kein Tracking.

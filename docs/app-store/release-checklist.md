@@ -3,11 +3,11 @@
 ## GitHub
 
 - [x] Create the repository `RainerZufall00/recipe2mealie`.
-- [ ] Push `main`.
-- [ ] Fill in `[NAME]`, `[ADDRESS]` and `[EMAIL]` in `docs/privacy.md`.
-- [ ] Set `FEEDBACK_EMAIL` in `Config/Base.xcconfig`
+- [x] Push `main`.
+- [x] Fill in `[NAME]`, `[ADDRESS]` and `[EMAIL]` in `docs/privacy.md`.
+- [x] Set `FEEDBACK_EMAIL` in `Config/Base.xcconfig`
       so the app's feedback screen appears. The issue forms are in `.github/ISSUE_TEMPLATE/`.
-- [ ] Settings → Pages → *Deploy from a branch* → `main` / `docs`. The privacy policy is then at
+- [x] Settings → Pages → *Deploy from a branch* → `main` / `docs`. The privacy policy is then at
       `https://rainerzufall00.github.io/recipe2mealie/privacy`.
 - [ ] Check that the CI workflow runs green (it needs a runner image with Xcode 27).
 - [ ] Optional: add screenshots to the README, enable Discussions, announce in the Mealie community.

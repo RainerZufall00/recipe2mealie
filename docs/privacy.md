@@ -13,7 +13,7 @@ access to. The developer does not run any servers for the app and does not colle
 
 ### Responsible
 Matthias Müller
-Email: feedback@mueller.ad
+Email: feedback@mail.mueller.ad
 
 ### What the app does not do
 - No user account with the developer, no analytics, no advertising, no tracking.
@@ -76,7 +76,7 @@ betreibst oder nutzt. Der Entwickler betreibt keine Server für die App und erhe
 
 ### Verantwortlich
 Matthias Müller
-E-Mail: feedback@mueller.ad
+E-Mail: feedback@mail.mueller.ad
 
 ### Was die App nicht tut
 - Kein Konto beim Entwickler, keine Analyse, keine Werbung, kein Tracking.

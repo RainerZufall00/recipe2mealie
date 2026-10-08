@@ -1,90 +1,98 @@
 <p align="center">
-  <img src="Recipe2Mealie/Assets.xcassets/AppLogo.imageset/AppLogo.png" width="128" alt="Recipe2Mealie icon">
+  <img src="Recipe2Mealie/Assets.xcassets/AppLogo.imageset/AppLogo.png" width="112" alt="Recipe2Mealie icon">
 </p>
 
 <h1 align="center">Recipe2Mealie</h1>
 
 <p align="center">
-  Import recipes from videos, websites, photos and text into your own <a href="https://mealie.io">Mealie</a> –
-  and browse, cook and edit them on iPhone and iPad.
+  <b>Recipes from videos, websites, photos and text – straight into your own <a href="https://mealie.io">Mealie</a>.</b><br>
+  iPhone &amp; iPad · iOS 26 · English &amp; Deutsch · no tracking
 </p>
 
-> **Unofficial app.** Recipe2Mealie is an independent project and is not affiliated with or endorsed by the
-> Mealie project.
+<p align="center">
+  <img src="docs/images/header.webp" alt="Recipe2Mealie: from video straight into Mealie">
+</p>
 
-## Features
+> **Unofficial app.** Recipe2Mealie is an independent project, not affiliated with or endorsed by Mealie.
 
-- **Share to import** – share a YouTube Short, Instagram Reel, TikTok or recipe website from any app and the
-  recipe lands in Mealie, with live progress.
-- **Description first** – for YouTube links, the app checks the video description before anything else. If it
-  links to a recipe page (verified by your Mealie server) or contains the recipe itself, you can import that
-  directly instead of having the whole video transcribed.
-- **Photos, cookbook scans and text** – scan cookbook pages with the document camera, pick photos or paste text.
-  On devices with Apple Intelligence this runs **entirely on the iPhone** (Vision text recognition + Apple's
-  on-device model); Mealie only receives the finished recipe. Mealie AI is available as a fallback.
-- **A full recipe browser** – search, tag filters, a scalable ingredient list, cooking mode, editing of every
-  field, and cover images from the camera, your photos or Image Playground.
-- **Private by design** – no accounts, no analytics, no tracking. Your recipes only go to *your* server.
-- German and English, iPhone and iPad, light and dark mode.
+## 🧠 AI on your iPhone – or on your server
 
-## How importing works
+Every import picks the best way to get the recipe. You decide where the AI runs.
 
-| Source | What happens | AI needed? |
-|---|---|---|
-| Recipe website | Mealie reads the page's structured recipe data | No |
-| YouTube with a recipe link in the description | Mealie reads the linked page | No |
-| YouTube with the recipe in the description | Extracted on the iPhone, or by Mealie AI | On-device, or Mealie AI |
-| Video without either | Mealie downloads the audio, uses subtitles or transcribes it | Mealie AI with an audio provider |
-| Photos, scans, text | Extracted on the iPhone, or by Mealie AI | On-device, or Mealie AI |
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>📱 On-device</h3>
+      Photos, cookbook scans, pasted text and YouTube descriptions are read with <b>Vision</b> and turned into a
+      recipe by <b>Apple Intelligence</b> – entirely on the iPhone. Free, fast, private: Mealie only receives the
+      finished recipe.
+    </td>
+    <td width="50%" valign="top">
+      <h3>☁️ Mealie server</h3>
+      For whole videos, Mealie downloads the audio, uses subtitles or transcribes it with the
+      <a href="https://docs.mealie.io/documentation/getting-started/installation/ai-providers/">AI provider</a>
+      you configured. Also the fallback for devices without Apple Intelligence.
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/images/description-choices.webp" width="260" alt="Import options for a YouTube Short"></td>
+    <td align="center"><img src="docs/images/progress.webp" width="260" alt="Live progress while Mealie processes a video"></td>
+  </tr>
+</table>
 
-## Requirements
+Recipe websites – and YouTube videos that link to one – need no AI at all: Mealie reads the page's structured
+recipe data directly.
 
-- iOS / iPadOS 26 or later
-- A Mealie server, version 3.x recommended
-- For video imports: an [AI provider with audio transcription](https://docs.mealie.io/documentation/getting-started/installation/ai-providers/) configured in Mealie
-- For on-device processing: a device that supports Apple Intelligence
+## ✨ Features
 
-## Get the app
+- 🔗 **Share to import** – YouTube Shorts, Instagram Reels, TikTok or any recipe website, from any app
+- 🔍 **Description first** – finds the recipe link or text in a video's description before transcribing anything
+- 📸 **Scan cookbooks** – document camera, photo library or pasted text
+- 📖 **Recipe browser** – search, tag filters, scalable servings, cooking mode
+- ✏️ **Edit everything** – every field, plus cover images from camera, photos or Image Playground
+- 🔒 **Private by design** – no accounts, no analytics; recipes only go to *your* server
 
-Recipe2Mealie is coming to the App Store. Until then, a TestFlight beta will be linked here.
+<p align="center">
+  <img src="docs/images/home.webp" width="24%" alt="Import screen">
+  <img src="docs/images/recipes.webp" width="24%" alt="Recipe browser">
+  <img src="docs/images/detail.webp" width="24%" alt="Recipe detail">
+</p>
 
-1. Install the app and open it.
-2. Enter your Mealie server address and sign in with your Mealie account or an API token.
-3. Share a video, website or photo to **Recipe2Mealie** from any app, or use the import screen in the app.
+## 🚀 Get started
 
-Just curious? Tap *Try without a server* to explore the app with built-in sample recipes.
+Coming to the App Store – a TestFlight beta will be linked here.
 
-## Privacy
+1. Enter your Mealie server address and sign in (account or API token).
+2. Share a video, website or photo to **Recipe2Mealie** – or use the import screen.
 
-The app has no accounts, analytics or tracking. It talks only to your Mealie server and, for YouTube links,
-to the YouTube Data API. Details: [Privacy Policy](https://rainerzufall00.github.io/recipe2mealie/privacy).
+No server? Tap **Try without a server** to explore with sample recipes.
 
-## Feedback
+**Needs:** iOS / iPadOS 26 · Mealie 3.x · an AI provider with audio transcription for video imports ·
+Apple Intelligence for on-device processing
 
-Found a bug or have an idea? [Open an issue](https://github.com/RainerZufall00/recipe2mealie/issues/new/choose)
-or use *Feedback* in the app's settings.
+## 💬 Feedback & contributing
 
-## Contributing
+[Open an issue](https://github.com/RainerZufall00/recipe2mealie/issues/new/choose) or use *Feedback* in the app's
+settings. Pull requests are welcome – see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-The app is open source. Issues and pull requests are welcome – see [CONTRIBUTING.md](CONTRIBUTING.md) for how to
-build it and how the project is structured.
+Privacy: the app talks only to your Mealie server and, for YouTube links, the YouTube Data API.
+[Privacy Policy](https://rainerzufall00.github.io/recipe2mealie/privacy)
 
 ## License
 
-The code is released under the [MIT License](LICENSE).
-
-The name **Recipe2Mealie** and the app icon are not covered by the license. If you publish your own build, please
-use a different name and icon. *Mealie* is the name of an independent open-source project. *YouTube* is a
+Code: [MIT License](LICENSE). The name **Recipe2Mealie** and the app icon are not covered – if you publish your
+own build, please use a different name and icon. *Mealie* is an independent open-source project. *YouTube* is a
 trademark of Google LLC. This app uses YouTube API Services; see the
 [YouTube Terms of Service](https://www.youtube.com/t/terms) and the
 [Google Privacy Policy](https://policies.google.com/privacy).
 
-### Demo photos
+<details>
+<summary>Demo photos</summary>
 
-The demo mode ("Try without a server") uses eight photos from [Unsplash](https://unsplash.com), in
-`Packages/MealieKit/Sources/MealieKit/Resources/DemoImages/`. They are not covered by the MIT License but by the
-[Unsplash License](https://unsplash.com/license): free to use, but not to be sold unaltered or used to build a
-competing photo service.
+The demo mode uses eight photos from [Unsplash](https://unsplash.com), in
+`Packages/MealieKit/Sources/MealieKit/Resources/DemoImages/` (also visible in the screenshots above). They are
+covered by the [Unsplash License](https://unsplash.com/license), not the MIT License: free to use, but not to be
+sold unaltered or used to build a competing photo service.
 
 | Recipe | Photo by |
 |---|---|
@@ -96,3 +104,5 @@ competing photo service.
 | Rainbow Buddha Bowl | [Mariana Medvedeva](https://unsplash.com/photos/fk6IiypMWss) |
 | Fluffy Blueberry Pancakes | [Adam Bartoszewicz](https://unsplash.com/photos/s8iYlK9ByQE) |
 | Banana Bread | [Cody Chan](https://unsplash.com/photos/a0fBbS8RZAo) |
+
+</details>

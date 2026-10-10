@@ -9,7 +9,7 @@ Character limits from App Store Connect in brackets. Checked with `docs/app-stor
 - **Age rating:** 4+ (no objectionable content; the app shows the user's own recipes)
 - **App Privacy:** "Data Not Collected"
 - **Privacy Policy URL:** `https://rainerzufall00.github.io/recipe2mealie/privacy` (GitHub Pages from `docs/`)
-- **Support URL:** `https://github.com/RainerZufall00/recipe2mealie/issues`
+- **Support URL:** `https://rainerzufall00.github.io/recipe2mealie/support` (GitHub Pages from `docs/`)
 - **Copyright:** 2026 RainerZufall00
 
 ---

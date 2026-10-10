@@ -72,7 +72,7 @@ Apple Intelligence for on-device processing
 
 ## 💬 Feedback & contributing
 
-[Open an issue](https://github.com/RainerZufall00/recipe2mealie/issues/new/choose) or use *Feedback* in the app's
+[Support page](https://rainerzufall00.github.io/recipe2mealie/support) · [Open an issue](https://github.com/RainerZufall00/recipe2mealie/issues/new/choose) · or use *Feedback* in the app's
 settings. Pull requests are welcome – see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Privacy: the app talks only to your Mealie server and, for YouTube links, the YouTube Data API.

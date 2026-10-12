@@ -37,13 +37,15 @@
 
 ## Build (Xcode Cloud)
 
-- [ ] Xcode → Integrate → Create Workflow: start condition *branch changes* on `main` (or manual start),
-      action *Archive – iOS*, post-action *TestFlight Internal Testing*. Grant access to the GitHub repository.
+- [ ] Xcode → Integrate → Create Workflow: start condition **manual start only** (no *branch changes*, otherwise
+      every push to `main` uploads a build), action *Archive – iOS*, post-action *TestFlight Internal Testing*.
+      Grant access to the GitHub repository.
 - [ ] Workflow → Environment → add `YOUTUBE_API_KEY` as a **secret** environment variable
       (`ci_scripts/ci_post_clone.sh` writes it into `Secrets.xcconfig`).
 - [ ] Bump `MARKETING_VERSION` for a new version. The build number is set by Xcode Cloud.
 - [ ] Test on a real device: share extension from YouTube/Instagram/Safari, camera scan, on-device processing,
       YouTube description check, editing, cover images, German and English.
-- [ ] Push to `main` → Xcode Cloud archives and uploads the build to TestFlight.
+- [ ] Xcode → Integrate → Manage Workflows → *Start Build* on `main` → Xcode Cloud archives and uploads the build
+      to TestFlight.
 - [ ] TestFlight: internal testing first, then a small external group (needs a short beta review).
 - [ ] Submit for review.

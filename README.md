@@ -6,7 +6,7 @@
 
 <p align="center">
   <b>Recipes from videos, websites, photos and text – straight into your own <a href="https://mealie.io">Mealie</a>.</b><br>
-  iPhone &amp; iPad · iOS 26 · English &amp; Deutsch · no tracking
+  iPhone &amp; iPad · iOS 26 · English &amp; German · no tracking
 </p>
 
 <p align="center">

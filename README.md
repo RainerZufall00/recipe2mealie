@@ -10,6 +10,22 @@
 </p>
 
 <p align="center">
+  <!-- TODO: replace with the real App Store link once the app is live -->
+  <a href="https://apps.apple.com/app/idXXXXXXXXXX">
+    <img src="docs/images/app-store-badge.svg" height="54" alt="Download on the App Store">
+  </a>
+</p>
+
+## 💡 Why I built this
+
+For a long time I was looking for a quick, lightweight way to get recipes I stumble upon on social media into
+Mealie – straight from my iPhone, without any hassle. Apple's on-device AI makes that possible at no extra cost,
+but Shortcuts kept running into their limits.
+
+And then there's the *wife acceptance factor*: importing a recipe has to be effortless, and so does searching our
+Mealie instance for tonight's dinner. I couldn't find an app that did both – so I built one.
+
+<p align="center">
   <img src="docs/images/header.webp" alt="Recipe2Mealie: from video straight into Mealie">
 </p>
 
@@ -60,7 +76,7 @@ recipe data directly.
 
 ## 🚀 Get started
 
-Coming to the App Store – a TestFlight beta will be linked here.
+[Download Recipe2Mealie on the App Store](https://apps.apple.com/app/idXXXXXXXXXX) <!-- TODO: real App Store link -->
 
 1. Enter your Mealie server address and sign in (account or API token).
 2. Share a video, website or photo to **Recipe2Mealie** – or use the import screen.
@@ -77,6 +93,14 @@ settings. Pull requests are welcome – see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Privacy: the app talks only to your Mealie server and, for YouTube links, the YouTube Data API.
 [Privacy Policy](https://rainerzufall00.github.io/recipe2mealie/privacy)
+
+## ☕ Support
+
+Recipe2Mealie is free, without ads or subscriptions. If it saves you time in the kitchen, you can buy me a coffee:
+
+<a href="https://buymeacoffee.com/rainerzufall00">
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" alt="Buy Me a Coffee">
+</a>
 
 ## License
 

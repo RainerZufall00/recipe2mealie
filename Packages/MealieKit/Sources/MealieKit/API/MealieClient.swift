@@ -64,6 +64,8 @@ public enum MealieError: LocalizedError, Equatable {
     case server(status: Int, message: String?)
     case unexpectedResponse
     case streamEnded
+    case oidcUnavailable
+    case oidcFailed(message: String?)
 
     public var errorDescription: String? {
         switch self {
@@ -79,6 +81,10 @@ public enum MealieError: LocalizedError, Equatable {
             L("Unerwartete Antwort vom Server.")
         case .streamEnded:
             L("Die Verbindung zu Mealie wurde unterbrochen, bevor der Import fertig war.")
+        case .oidcUnavailable:
+            L("Dieser Mealie-Server bietet keine OIDC-Anmeldung für Apps an. Dafür braucht es Mealie 3.23 oder neuer mit eingerichtetem OIDC.")
+        case .oidcFailed(let message):
+            message ?? L("Die Anmeldung beim Anbieter ist fehlgeschlagen. Bitte versuche es noch einmal.")
         }
     }
 }
@@ -130,13 +136,52 @@ public final class MealieClient: MealieAPI {
             .replacingOccurrences(of: "+", with: "%2B")
             .data(using: .utf8)
         let login: AuthTokenResponse = try await send(request, session: session)
+        return await apiToken(serverURL: serverURL, sessionToken: login.accessToken, session: session)
+    }
 
-        let client = MealieClient(serverURL: serverURL, token: login.accessToken, session: session)
+    /// What the server needs for an OIDC sign-in, or nil when it has none for apps: OIDC isn't
+    /// set up, or Mealie is older than 3.23.
+    public static func oidcConfig(serverURL: URL, session: URLSession = .mealie) async throws -> OIDCNativeConfig? {
+        let request = URLRequest(url: serverURL.appending(path: "api/auth/oauth/native/config"))
+        do {
+            return try await send(request, session: session)
+        } catch MealieError.notFound {
+            return nil
+        }
+    }
+
+    /// Has Mealie exchange the code from the provider's redirect, then trades that session for a
+    /// long-lived API token like the password sign-in does.
+    public static func signIn(with authorization: OIDCAuthorization, callback: URL,
+                              session: URLSession = .mealie) async throws -> String {
+        let code = try authorization.code(from: callback)
+        var request = URLRequest(url: authorization.serverURL.appending(path: "api/auth/oauth/native/token"))
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try JSONSerialization.data(withJSONObject: [
+            "code": code,
+            "code_verifier": authorization.codeVerifier,
+            "redirect_uri": OIDCAuthorization.redirectURI,
+            "nonce": authorization.nonce
+        ])
+        let login: AuthTokenResponse
+        do {
+            login = try await send(request, session: session)
+        } catch MealieError.unauthorized {
+            // Mealie logs why, but only tells the app that it refused.
+            throw MealieError.oidcFailed(message: L("Mealie hat die Anmeldung abgelehnt. Den Grund findest du im Log des Mealie-Servers."))
+        }
+        return await apiToken(serverURL: authorization.serverURL, sessionToken: login.accessToken, session: session)
+    }
+
+    /// Exchanges a session for a long-lived API token, so the app never has to sign in again.
+    private static func apiToken(serverURL: URL, sessionToken: String, session: URLSession) async -> String {
+        let client = MealieClient(serverURL: serverURL, token: sessionToken, session: session)
         do {
             return try await client.createAPIToken(name: "Recipe2Mealie (iOS)")
         } catch {
             // Fall back to the session token; it expires, but the user can sign in again.
-            return login.accessToken
+            return sessionToken
         }
     }
 

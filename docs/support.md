@@ -19,7 +19,8 @@ subscriptions.
 ### Getting started
 
 1. Open the app and enter the address of your Mealie server, e.g. `https://mealie.example.com`.
-2. Sign in with your Mealie username and password, or with an API token.
+2. Sign in with your Mealie username and password, with an API token, or with the OIDC provider your Mealie
+   server uses (e.g. Pocket ID or Authentik).
 3. Share a video, website or photo to **Recipe2Mealie** from any app, or use the import screen.
 
 No server? Tap **Try without a server** to explore the app with built-in sample recipes.
@@ -34,7 +35,14 @@ servers.
 
 **How do I get an API token?**
 In Mealie's web interface, open **Profile → API Tokens**, enter a name and create the token. Copy it into the
-app. You don't need a token if you sign in with your username and password.
+app. You don't need a token if you sign in with your username and password or with OIDC.
+
+**How do I sign in with OIDC (Pocket ID, Authentik, Keycloak …)?**
+The app shows **Sign in with …** as soon as you enter the address of a Mealie server that has OIDC set up. It
+needs Mealie 3.23 or later. The sign-in opens in the browser, so passkeys and password managers work as usual.
+Once, the Mealie admin has to allow the app's callback URL on the OIDC client Mealie uses in the provider:
+`de.recipe2mealie.app:/oauth/callback`. Google and Microsoft need a separate client for apps instead; see
+[Mealie's OIDC guide](https://mealie.io/documentation/getting-started/authentication/oidc-v2/).
 
 **The app can't connect to my server.**
 Check that the address includes `https://` (or `http://` on your home network) and that the server is reachable
@@ -69,7 +77,8 @@ In-App-Käufe oder Abos.
 ### Erste Schritte
 
 1. App öffnen und die Adresse deines Mealie-Servers eingeben, z. B. `https://mealie.example.com`.
-2. Mit Mealie-Benutzername und Passwort oder mit einem API-Token anmelden.
+2. Mit Mealie-Benutzername und Passwort, mit einem API-Token oder über den OIDC-Anbieter deines
+   Mealie-Servers (z. B. Pocket ID oder Authentik) anmelden.
 3. Ein Video, eine Website oder ein Foto aus einer beliebigen App an **Recipe2Mealie** teilen oder den
    Import-Bildschirm nutzen.
 
@@ -86,7 +95,16 @@ und verkauft keine.
 
 **Wie bekomme ich einen API-Token?**
 Öffne in der Weboberfläche von Mealie **Profil → API-Tokens**, gib einen Namen ein und erstelle den Token.
-Kopiere ihn in die App. Meldest du dich mit Benutzername und Passwort an, brauchst du keinen Token.
+Kopiere ihn in die App. Meldest du dich mit Benutzername und Passwort oder über OIDC an, brauchst du keinen
+Token.
+
+**Wie melde ich mich über OIDC an (Pocket ID, Authentik, Keycloak …)?**
+Die App zeigt **Mit … anmelden**, sobald du die Adresse eines Mealie-Servers mit eingerichtetem OIDC eingibst.
+Dafür braucht es Mealie 3.23 oder neuer. Die Anmeldung öffnet sich im Browser, Passkeys und Passwort-Manager
+funktionieren also wie gewohnt. Einmalig muss der Mealie-Admin beim OIDC-Client, den Mealie im Anbieter nutzt,
+die Callback-URL der App erlauben: `de.recipe2mealie.app:/oauth/callback`. Google und Microsoft brauchen
+stattdessen einen eigenen Client für Apps, siehe
+[OIDC-Anleitung von Mealie](https://mealie.io/documentation/getting-started/authentication/oidc-v2/).
 
 **Die App verbindet sich nicht mit meinem Server.**
 Prüfe, ob die Adresse mit `https://` beginnt (im Heimnetz ggf. `http://`) und ob der Server vom iPhone aus

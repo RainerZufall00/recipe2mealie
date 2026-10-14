@@ -258,6 +258,8 @@ public struct MealieUser: Codable, Hashable, Sendable {
 public struct MealieAppInfo: Codable, Sendable {
     public var version: String
     public var allowPasswordLogin: Bool?
+    public var enableOidc: Bool?
+    public var oidcProviderName: String?
 }
 
 struct AuthTokenResponse: Codable {

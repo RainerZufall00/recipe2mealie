@@ -77,7 +77,7 @@ recipe data directly.
 
 [Download Recipe2Mealie on the App Store](https://apps.apple.com/app/id6816929559)
 
-1. Enter your Mealie server address and sign in (account or API token).
+1. Enter your Mealie server address and sign in (account, API token or OIDC).
 2. Share a video, website or photo to **Recipe2Mealie** – or use the import screen.
 
 No server? Tap **Try without a server** to explore with sample recipes.

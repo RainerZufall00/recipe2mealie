@@ -85,6 +85,92 @@ struct FormattingTests {
         #expect(ingredient.text(scaledBy: 2) == "500 g Spaghetti")
         #expect(ingredient.text() == "250 g Spaghetti")
     }
+
+    @Test func freeTextIngredientScalesLeadingAmount() {
+        func scaled(_ text: String, _ factor: Double) -> String {
+            RecipeIngredient.freeText(text).text(scaledBy: factor)
+        }
+        #expect(scaled("4 Bananen", 0.5) == "2 Bananen")
+        #expect(scaled("1/2 TL Salz", 2) == "1 TL Salz")
+        #expect(scaled("1 ½ Tassen Mehl", 2) == "3 Tassen Mehl")
+        #expect(scaled("1½ Tassen Mehl", 2) == "3 Tassen Mehl")
+        #expect(scaled("200g Mehl", 0.75) == "150g Mehl")
+        #expect(scaled("1,5 l Milch", 2) == "3 l Milch")
+        #expect(scaled("1.000 g Kartoffeln", 0.5) == "500 g Kartoffeln")
+        #expect(scaled("2-3 Zwiebeln", 2) == "4–6 Zwiebeln")
+        #expect(scaled("- 3 Eier", 0.5) == "- 1½ Eier")
+        #expect(scaled("2 Dosen (à 400 g) Tomaten", 0.5) == "1 Dosen (à 400 g) Tomaten")
+        #expect(scaled("Salz und Pfeffer", 2) == "Salz und Pfeffer")
+        #expect(scaled("4 Bananen", 1) == "4 Bananen")
+    }
+
+    @Test func scaledAmountIsSeparateForHighlighting() {
+        let parts = RecipeIngredient.freeText("4 Bananen").scaledText(by: 0.5)
+        #expect(parts.before == "")
+        #expect(parts.amount == "2")
+        #expect(parts.after == " Bananen")
+        #expect(RecipeIngredient.freeText("4 Bananen").scaledText(by: 1).amount == nil)
+    }
+
+    @Test func scalableAmountComesFromStructuredOrFreeText() {
+        #expect(RecipeIngredient.freeText("4 Bananen").scalableAmount == 4)
+        #expect(RecipeIngredient.freeText("Salz").scalableAmount == nil)
+        let structured = RecipeIngredient(quantity: 250, unit: IngredientUnit(name: "g"),
+                                          food: IngredientFood(name: "Spaghetti"), display: "250 g Spaghetti")
+        #expect(structured.scalableAmount == 250)
+    }
+
+    @Test func readsTypedAmounts() {
+        #expect(RecipeFormat.amount(from: "2") == 2)
+        #expect(RecipeFormat.amount(from: "0,5") == 0.5)
+        #expect(RecipeFormat.amount(from: "1½") == 1.5)
+        #expect(RecipeFormat.amount(from: "3/4") == 0.75)
+        #expect(RecipeFormat.amount(from: "") == nil)
+        #expect(RecipeFormat.amount(from: "viel") == nil)
+        #expect(RecipeFormat.amount(from: "0") == nil)
+    }
+
+    @Test func largeScaledQuantitiesAreRounded() {
+        #expect(RecipeFormat.quantity(1000.0 / 3) == "333")
+        #expect(RecipeFormat.quantity(12.5) == "13")
+    }
+}
+
+struct OIDCTests {
+    private func authorization() throws -> OIDCAuthorization {
+        let json = #"{"authorization_endpoint":"https://id.example.com/authorize","client_id":"mealie","scope":"openid email profile"}"#
+        let config = try JSONDecoder().decode(OIDCNativeConfig.self, from: Data(json.utf8))
+        return try OIDCAuthorization(serverURL: URL(string: "https://mealie.example.com")!, config: config)
+    }
+
+    @Test func buildsAuthorizationRequestWithPKCE() throws {
+        let auth = try authorization()
+        let items = URLComponents(url: auth.url, resolvingAgainstBaseURL: false)?.queryItems ?? []
+        func value(_ name: String) -> String? { items.first { $0.name == name }?.value }
+        #expect(auth.url.host() == "id.example.com")
+        #expect(value("response_type") == "code")
+        #expect(value("client_id") == "mealie")
+        #expect(value("scope") == "openid email profile")
+        #expect(value("redirect_uri") == OIDCAuthorization.redirectURI)
+        #expect(value("state") == auth.state)
+        #expect(value("nonce") == auth.nonce)
+        #expect(value("code_challenge_method") == "S256")
+        #expect(value("code_challenge")?.isEmpty == false)
+        #expect(value("code_challenge") != auth.codeVerifier)
+    }
+
+    @Test func readsCodeOnlyWithMatchingState() throws {
+        let auth = try authorization()
+        let scheme = OIDCAuthorization.callbackScheme
+        let good = URL(string: "\(scheme):/oauth/callback?code=abc&state=\(auth.state)")!
+        #expect(try auth.code(from: good) == "abc")
+
+        let wrongState = URL(string: "\(scheme):/oauth/callback?code=abc&state=other")!
+        #expect(throws: MealieError.oidcFailed(message: nil)) { try auth.code(from: wrongState) }
+
+        let denied = URL(string: "\(scheme):/oauth/callback?error=access_denied&error_description=Nope")!
+        #expect(throws: MealieError.oidcFailed(message: "Nope")) { try auth.code(from: denied) }
+    }
 }
 
 struct LinkTests {

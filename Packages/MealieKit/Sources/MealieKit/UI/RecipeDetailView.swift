@@ -23,7 +23,10 @@ public struct RecipeDetailView: View {
 
     @State private var recipe: Recipe?
     @State private var loadError: String?
-    @State private var servings: Double?
+    /// How much of the recipe to show; 1 is as written.
+    @State private var scale = 1.0
+    @State private var amountPrompt: AmountPrompt?
+    @State private var amountInput = ""
     @State private var checkedIngredients: Set<Int> = []
     @State private var doneSteps: Set<Int> = []
     @State private var cookMode = false
@@ -59,7 +62,7 @@ public struct RecipeDetailView: View {
             if let recipe {
                 RecipeEditorView(recipe: recipe, api: api) { saved in
                     self.recipe = saved
-                    servings = nil
+                    scale = 1
                     checkedIngredients = []
                     doneSteps = []
                 }
@@ -138,21 +141,40 @@ public struct RecipeDetailView: View {
         }
     }
 
+    /// "I have 2 bananas": scales the recipe to the amount the user has of one ingredient.
+    private struct AmountPrompt: Identifiable {
+        let id: Int
+        let ingredient: String
+        let amount: Double
+    }
+
     private func ingredients(_ recipe: Recipe) -> some View {
         let base = recipe.servings
-        let factor = (servings ?? base).flatMap { current in base.map { current / $0 } } ?? 1
+        let canScale = recipe.ingredients.contains { $0.scalableAmount != nil }
 
         return VStack(alignment: .leading, spacing: 12) {
             HStack {
                 SectionTitle(L("Zutaten"))
                 Spacer()
+                if scale != 1 {
+                    Button(L("Originalmenge"), systemImage: "arrow.counterclockwise") { scale = 1 }
+                        .labelStyle(.iconOnly)
+                        .foregroundStyle(.secondary)
+                }
                 if let base {
-                    let current = servings ?? base
-                    Stepper(value: Binding(get: { current }, set: { servings = max(0.5, $0) }),
+                    Stepper(value: Binding(get: { base * scale }, set: { scale = max(0.5, $0) / base }),
                             in: 0.5...100, step: base >= 2 ? 1 : 0.5) {
-                        Text(L("\(RecipeFormat.servings(current)) Portionen"))
+                        Text(L("\(RecipeFormat.servings(base * scale)) Portionen"))
                             .font(.subheadline.monospacedDigit())
-                            .foregroundStyle(factor == 1 ? Color.secondary : Color.brand)
+                            .foregroundStyle(scale == 1 ? Color.secondary : Color.brand)
+                    }
+                    .fixedSize()
+                } else if canScale {
+                    // Without a number of servings, scale by a factor instead.
+                    Stepper(value: $scale, in: 0.5...20, step: 0.5) {
+                        Text(L("\(RecipeFormat.quantity(scale))×"))
+                            .font(.subheadline.monospacedDigit())
+                            .foregroundStyle(scale == 1 ? Color.secondary : Color.brand)
                     }
                     .fixedSize()
                 }
@@ -176,7 +198,7 @@ public struct RecipeDetailView: View {
                         HStack(alignment: .firstTextBaseline, spacing: 12) {
                             Image(systemName: checked ? "checkmark.circle.fill" : "circle")
                                 .foregroundStyle(checked ? Color.brand : Color.secondary)
-                            Text(ingredient.text(scaledBy: factor))
+                            Text(ingredientLine(ingredient, highlighted: !checked))
                                 .strikethrough(checked)
                                 .foregroundStyle(checked ? .secondary : .primary)
                                 .multilineTextAlignment(.leading)
@@ -186,9 +208,47 @@ public struct RecipeDetailView: View {
                     }
                     .buttonStyle(.plain)
                     .sensoryFeedback(.selection, trigger: checked)
+                    .contextMenu {
+                        if let amount = ingredient.scalableAmount {
+                            Button(L("Ich habe …"), systemImage: "scalemass") {
+                                amountInput = ""
+                                amountPrompt = AmountPrompt(id: index, ingredient: ingredient.text(scaledBy: scale),
+                                                            amount: amount)
+                            }
+                        }
+                    }
                 }
             }
+
+            if canScale, scale == 1 {
+                Text(L("Halte eine Zutat gedrückt, um alles auf die Menge umzurechnen, die du hast."))
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+            }
         }
+        .alert(L("Wie viel hast du?"), isPresented: Binding(get: { amountPrompt != nil },
+                                                            set: { if !$0 { amountPrompt = nil } }),
+               presenting: amountPrompt) { prompt in
+            TextField(RecipeFormat.quantity(prompt.amount * scale), text: $amountInput)
+                .keyboardType(.decimalPad)
+            Button(L("Umrechnen")) {
+                if let have = RecipeFormat.amount(from: amountInput) { scale = have / prompt.amount }
+            }
+            Button(L("Abbrechen"), role: .cancel) {}
+        } message: { prompt in
+            Text(L("Statt „\(prompt.ingredient)“. Alle Zutaten werden passend umgerechnet."))
+        }
+    }
+
+    /// The ingredient's text, with a scaled amount in the accent colour.
+    private func ingredientLine(_ ingredient: RecipeIngredient, highlighted: Bool) -> AttributedString {
+        let parts = ingredient.scaledText(by: scale)
+        var amount = AttributedString(parts.amount ?? "")
+        if highlighted {
+            amount.foregroundColor = Color.brand
+            amount.inlinePresentationIntent = .stronglyEmphasized
+        }
+        return AttributedString(parts.before) + amount + AttributedString(parts.after)
     }
 
     private func instructions(_ recipe: Recipe) -> some View {

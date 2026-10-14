@@ -69,6 +69,8 @@ public enum RecipeFormat {
     }
 
     public static func quantity(_ value: Double) -> String {
+        // "333,33 g" after scaling is no help in the kitchen.
+        if value >= 10 { return String(Int(value.rounded())) }
         let whole = value.rounded(.down)
         let fraction = value - whole
         let fractions: [(Double, String)] = [(0.25, "¼"), (1.0 / 3, "⅓"), (0.5, "½"), (2.0 / 3, "⅔"), (0.75, "¾")]
@@ -82,22 +84,99 @@ public enum RecipeFormat {
     public static func servings(_ value: Double) -> String {
         value.formatted(.number.precision(.fractionLength(0...1)))
     }
+
+    /// The amount a free-text ingredient line starts with, like "4", "1/2", "1 ½", "1,5" or "2–3".
+    struct LeadingAmount {
+        /// One value, or two for a range.
+        var values: [Double]
+        var range: Range<String.Index>
+    }
+
+    static func leadingAmount(in text: String) -> LeadingAmount? {
+        let number = #"\d+[.,]\d+|\d+\s+\d+/\d+|\d+\s?[¼½¾⅓⅔⅛]|\d+/\d+|[¼½¾⅓⅔⅛]|\d+"#
+        // An optional list bullet, then a number or a range of two.
+        let pattern = #"^\s*(?:[-•*]\s+)?(?<first>"# + number + #")(?:\s*[-–]\s*(?<second>"# + number + #"))?"#
+        guard let regex = try? Regex(pattern),
+              let match = try? regex.prefixMatch(in: text),
+              let first = match["first"]?.substring, let start = match["first"]?.range?.lowerBound,
+              let firstValue = amount(from: first) else { return nil }
+        var values = [firstValue]
+        var end = first.endIndex
+        if let second = match["second"]?.substring, let secondValue = amount(from: second) {
+            values.append(secondValue)
+            end = second.endIndex
+        }
+        return LeadingAmount(values: values, range: start..<end)
+    }
+
+    /// Reads an amount the way recipes write it: "2", "1,5", "1.5", "1/2", "1 1/2", "½" or "1½".
+    public static func amount(from text: some StringProtocol) -> Double? {
+        let fractions: [Character: Double] = ["¼": 0.25, "½": 0.5, "¾": 0.75, "⅓": 1.0 / 3, "⅔": 2.0 / 3, "⅛": 0.125]
+        var total = 0.0
+        for part in text.split(whereSeparator: \.isWhitespace) {
+            var part = Substring(part)
+            if let last = part.last, let fraction = fractions[last] {
+                total += fraction
+                part = part.dropLast()
+                if part.isEmpty { continue }
+            }
+            if let slash = part.firstIndex(of: "/") {
+                guard let numerator = Double(part[..<slash]),
+                      let denominator = Double(part[part.index(after: slash)...]), denominator > 0 else { return nil }
+                total += numerator / denominator
+            } else if part.wholeMatch(of: #/[1-9]\d{0,2}\.\d{3}/#) != nil {
+                // "1.000 g" is a thousand grams, the way German recipes write it.
+                guard let value = Double(part.replacing(".", with: "")) else { return nil }
+                total += value
+            } else {
+                guard let value = Double(part.replacing(",", with: ".")) else { return nil }
+                total += value
+            }
+        }
+        return total > 0 ? total : nil
+    }
 }
 
 extension RecipeIngredient {
-    /// Text for the ingredient list, scaled by `factor` when Mealie has structured data.
-    public func text(scaledBy factor: Double = 1) -> String {
-        if factor != 1, let quantity, quantity > 0, unit != nil || food != nil {
+    /// Whether Mealie parsed this ingredient into amount, unit and food.
+    private var hasStructuredQuantity: Bool {
+        (quantity ?? 0) > 0 && (unit != nil || food != nil)
+    }
+
+    /// The amount scaling changes: Mealie's parsed quantity, or the number a free-text line starts with.
+    public var scalableAmount: Double? {
+        if hasStructuredQuantity { return quantity }
+        return RecipeFormat.leadingAmount(in: text())?.values.first
+    }
+
+    /// Text for the ingredient list with its amount scaled by `factor`, split so the scaled amount
+    /// can be highlighted. `amount` is nil when nothing was scaled.
+    public func scaledText(by factor: Double) -> (before: String, amount: String?, after: String) {
+        guard factor != 1 else { return ("", nil, text()) }
+        if hasStructuredQuantity, let quantity {
             let unitName: String? = {
                 guard let unit else { return nil }
                 if unit.useAbbreviation == true, let abbreviation = unit.abbreviation?.nilIfBlank { return abbreviation }
                 return unit.name
             }()
-            return [RecipeFormat.quantity(quantity * factor), unitName, food?.name, note?.nilIfBlank]
-                .compactMap { $0 }
-                .joined(separator: " ")
+            let rest = [unitName, food?.name, note?.nilIfBlank].compactMap { $0 }.joined(separator: " ")
+            return ("", RecipeFormat.quantity(quantity * factor), rest.isEmpty ? "" : " " + rest)
         }
-        return display?.nilIfBlank ?? originalText?.nilIfBlank ?? note?.nilIfBlank ?? food?.name ?? ""
+        let line = text()
+        guard let amount = RecipeFormat.leadingAmount(in: line) else { return ("", nil, line) }
+        let scaled = amount.values.map { RecipeFormat.quantity($0 * factor) }.joined(separator: "–")
+        return (String(line[..<amount.range.lowerBound]), scaled, String(line[amount.range.upperBound...]))
+    }
+
+    /// Text for the ingredient list, scaled by `factor`.
+    public func text(scaledBy factor: Double) -> String {
+        let parts = scaledText(by: factor)
+        return parts.before + (parts.amount ?? "") + parts.after
+    }
+
+    /// Text for the ingredient list as Mealie shows it.
+    public func text() -> String {
+        display?.nilIfBlank ?? originalText?.nilIfBlank ?? note?.nilIfBlank ?? food?.name ?? ""
     }
 
     /// Mealie uses ingredients with only a title as section headers.

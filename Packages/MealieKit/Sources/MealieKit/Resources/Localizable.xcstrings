@@ -1,6 +1,16 @@
 {
   "sourceLanguage" : "de",
   "strings" : {
+    "%@×" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@×"
+          }
+        }
+      }
+    },
     "„%@“ als neuen Tag anlegen" : {
       "localizations" : {
         "en" : {
@@ -392,6 +402,16 @@
         }
       }
     },
+    "Die Anmeldung beim Anbieter ist fehlgeschlagen. Bitte versuche es noch einmal." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signing in with the provider failed. Please try again."
+          }
+        }
+      }
+    },
     "Die Auswertung passiert auf deinem iPhone. An %@ geht erst das fertige Rezept." : {
       "localizations" : {
         "de" : {
@@ -504,6 +524,16 @@
         }
       }
     },
+    "Dieser Mealie-Server bietet keine OIDC-Anmeldung für Apps an. Dafür braucht es Mealie 3.23 oder neuer mit eingerichtetem OIDC." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This Mealie server doesn't offer OIDC sign-in for apps. It needs Mealie 3.23 or later with OIDC set up."
+          }
+        }
+      }
+    },
     "Dieses Gerät unterstützt Apple Intelligence nicht." : {
       "localizations" : {
         "en" : {
@@ -600,6 +630,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Saved"
+          }
+        }
+      }
+    },
+    "Halte eine Zutat gedrückt, um alles auf die Menge umzurechnen, die du hast." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Touch and hold an ingredient to scale everything to the amount you have."
+          }
+        }
+      }
+    },
+    "Ich habe …" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I have …"
           }
         }
       }
@@ -714,6 +764,16 @@
         }
       }
     },
+    "Mealie hat die Anmeldung abgelehnt. Den Grund findest du im Log des Mealie-Servers." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mealie refused the sign-in. The Mealie server's log says why."
+          }
+        }
+      }
+    },
     "Mealie hat nicht alles gefunden. Prüfe das Rezept am besten kurz." : {
       "localizations" : {
         "en" : {
@@ -810,6 +870,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
+          }
+        }
+      }
+    },
+    "Originalmenge" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Original amount"
           }
         }
       }
@@ -1056,6 +1126,16 @@
         }
       }
     },
+    "Statt „%@“. Alle Zutaten werden passend umgerechnet." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instead of “%@”. All ingredients are scaled to match."
+          }
+        }
+      }
+    },
     "Tag suchen oder anlegen" : {
       "localizations" : {
         "en" : {
@@ -1207,6 +1287,16 @@
         }
       }
     },
+    "Umrechnen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scale"
+          }
+        }
+      }
+    },
     "Unerwartete Antwort vom Server." : {
       "localizations" : {
         "en" : {
@@ -1303,6 +1393,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Website"
+          }
+        }
+      }
+    },
+    "Wie viel hast du?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How much do you have?"
           }
         }
       }

@@ -24,6 +24,7 @@ Email: feedback@mail.mueller.ad
 | Data | Recipient | When |
 |---|---|---|
 | Server address, API token, recipes, photos, text and links you import | **Your own Mealie server** | When you sign in, browse recipes or import |
+| Your sign-in with the OIDC provider (e.g. Pocket ID) | The provider your Mealie server is set up with, in the system browser | Only when you sign in with OIDC |
 | Links, texts and photos for "Mealie AI" imports | Your Mealie server, which passes them to the AI provider **you** configured in Mealie | Only when you choose Mealie AI |
 | YouTube video ID | Google (YouTube Data API) | When you import a YouTube link, to read its title and description |
 | Instagram or TikTok link | Instagram (Meta) or TikTok, read without an account | When you import such a link, to read its public caption |
@@ -90,6 +91,7 @@ E-Mail: feedback@mail.mueller.ad
 | Daten | Empfänger | Wann |
 |---|---|---|
 | Server-Adresse, API-Token, Rezepte sowie Fotos, Texte und Links, die du importierst | **Dein eigener Mealie-Server** | Beim Anmelden, Ansehen von Rezepten und Importieren |
+| Deine Anmeldung beim OIDC-Anbieter (z. B. Pocket ID) | Der Anbieter, mit dem dein Mealie-Server eingerichtet ist, im Browser des Systems | Nur wenn du dich über OIDC anmeldest |
 | Links, Texte und Fotos bei Importen mit „Mealie AI“ | Dein Mealie-Server, der sie an den KI-Anbieter weitergibt, den **du** in Mealie eingerichtet hast | Nur wenn du Mealie AI wählst |
 | YouTube-Video-ID | Google (YouTube Data API) | Beim Import eines YouTube-Links, um Titel und Beschreibung zu lesen |
 | Instagram- oder TikTok-Link | Instagram (Meta) bzw. TikTok, ohne Konto abgerufen | Beim Import eines solchen Links, um die öffentliche Beschreibung zu lesen |

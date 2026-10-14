@@ -1,3 +1,4 @@
+import AuthenticationServices
 import MealieKit
 import SwiftUI
 
@@ -5,6 +6,7 @@ import SwiftUI
 struct WelcomeView: View {
     @Environment(MealieAccount.self) private var account
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.webAuthenticationSession) private var webAuthenticationSession
 
     enum Method: String, CaseIterable, Identifiable {
         case token = "API-Token"
@@ -28,6 +30,7 @@ struct WelcomeView: View {
     @State private var isConnecting = false
     @State private var error: String?
     @State private var formWidth: CGFloat = 0
+    @State private var oidc = MealieAccount.OIDCSupport.unavailable
 
     var body: some View {
         NavigationStack {
@@ -81,6 +84,23 @@ struct WelcomeView: View {
                         .autocorrectionDisabled()
                 } header: {
                     Text("Server")
+                } footer: {
+                    if case .needsNewerMealie(let provider) = oidc {
+                        Text("Für die Anmeldung mit \(provider) braucht die App Mealie 3.23 oder neuer.")
+                    }
+                }
+
+                if case .available(let provider) = oidc {
+                    Section {
+                        Button {
+                            Task { await connectWithOIDC() }
+                        } label: {
+                            Label("Mit \(provider) anmelden", systemImage: "person.badge.key")
+                        }
+                        .disabled(isConnecting)
+                    } footer: {
+                        Text("Öffnet die Anmeldung im Browser. Im Anbieter muss bei Mealie einmalig diese Callback-URL erlaubt sein: `\(OIDCAuthorization.redirectURI)`")
+                    }
                 }
 
                 Section {
@@ -143,6 +163,13 @@ struct WelcomeView: View {
             .contentMargins(.horizontal, formWidth > 600 ? (formWidth - 560) / 2 : nil, for: .scrollContent)
             .onGeometryChange(for: CGFloat.self) { $0.size.width } action: { formWidth = $0 }
             .task { account.refreshICloudLogin() }
+            .task(id: server) {
+                // Wait until the address is typed out before asking the server.
+                try? await Task.sleep(for: .milliseconds(600))
+                guard !Task.isCancelled else { return }
+                let support = await account.oidcSupport(server: server)
+                if !Task.isCancelled { oidc = support }
+            }
             .onChange(of: scenePhase) { _, phase in
                 // iCloud Keychain may sync the login while the app is in the background.
                 if phase == .active { account.refreshICloudLogin() }
@@ -178,6 +205,28 @@ struct WelcomeView: View {
             token = ""
             password = ""
             if saveToICloud { account.setSavedToICloud(true) }
+        } catch let urlError as URLError {
+            error = String(localized: "Der Server ist nicht erreichbar (\(urlError.localizedDescription)). Stimmt die Adresse?")
+        } catch {
+            self.error = error.localizedDescription
+        }
+    }
+
+    private func connectWithOIDC() async {
+        let saveToICloud = saveToICloud
+        isConnecting = true
+        defer { isConnecting = false }
+        do {
+            let authorization = try await account.startOIDCSignIn(server: server)
+            let callback = try await webAuthenticationSession.authenticate(
+                using: authorization.url,
+                callback: .customScheme(OIDCAuthorization.callbackScheme),
+                additionalHeaderFields: [:]
+            )
+            try await account.finishOIDCSignIn(authorization, callback: callback)
+            if saveToICloud { account.setSavedToICloud(true) }
+        } catch let sessionError as ASWebAuthenticationSessionError where sessionError.code == .canceledLogin {
+            // The user closed the browser.
         } catch let urlError as URLError {
             error = String(localized: "Der Server ist nicht erreichbar (\(urlError.localizedDescription)). Stimmt die Adresse?")
         } catch {

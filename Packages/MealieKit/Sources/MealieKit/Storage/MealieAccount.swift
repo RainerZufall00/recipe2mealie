@@ -118,6 +118,35 @@ public final class MealieAccount {
         try await finishSignIn(serverURL: url, token: token)
     }
 
+    /// Whether the server offers sign-in through its OIDC provider, and under which name.
+    public enum OIDCSupport: Equatable, Sendable {
+        case unavailable
+        /// OIDC is set up, but Mealie is too old for app sign-ins.
+        case needsNewerMealie(provider: String)
+        case available(provider: String)
+    }
+
+    public func oidcSupport(server: String) async -> OIDCSupport {
+        guard let url = MealieClient.normalizedServerURL(server),
+              let info = try? await MealieClient.appInfo(serverURL: url), info.enableOidc == true else { return .unavailable }
+        let provider = info.oidcProviderName?.nilIfBlank ?? "OIDC"
+        guard (try? await MealieClient.oidcConfig(serverURL: url)) != nil else { return .needsNewerMealie(provider: provider) }
+        return .available(provider: provider)
+    }
+
+    /// Prepares an OIDC sign-in. Open its `url` in the system browser, then pass the redirect it
+    /// ends on to `finishOIDCSignIn`.
+    public func startOIDCSignIn(server: String) async throws -> OIDCAuthorization {
+        guard let url = MealieClient.normalizedServerURL(server) else { throw MealieError.invalidServerURL }
+        guard let config = try await MealieClient.oidcConfig(serverURL: url) else { throw MealieError.oidcUnavailable }
+        return try OIDCAuthorization(serverURL: url, config: config)
+    }
+
+    public func finishOIDCSignIn(_ authorization: OIDCAuthorization, callback: URL) async throws {
+        let token = try await MealieClient.signIn(with: authorization, callback: callback)
+        try await finishSignIn(serverURL: authorization.serverURL, token: token)
+    }
+
     /// Checks that the server is reachable and actually Mealie.
     public func checkServer(_ server: String) async throws -> MealieAppInfo {
         guard let url = MealieClient.normalizedServerURL(server) else { throw MealieError.invalidServerURL }

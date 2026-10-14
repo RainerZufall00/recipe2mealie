@@ -508,6 +508,16 @@
         }
       }
     },
+    "Für die Anmeldung mit %@ braucht die App Mealie 3.23 oder neuer." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signing in with %@ requires Mealie 3.23 or later."
+          }
+        }
+      }
+    },
     "Für Video-Importe braucht Mealie einen KI-Anbieter mit Audio-Transkription." : {
       "localizations" : {
         "en" : {
@@ -743,6 +753,16 @@
     "mealie.example.com" : {
 
     },
+    "Mit %@ anmelden" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in with %@"
+          }
+        }
+      }
+    },
     "nicht verfügbar" : {
       "localizations" : {
         "en" : {
@@ -779,6 +799,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Even faster: share directly"
+          }
+        }
+      }
+    },
+    "Öffnet die Anmeldung im Browser. Im Anbieter muss bei Mealie einmalig diese Callback-URL erlaubt sein: `%@`" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens the sign-in in the browser. Mealie's client in the provider must allow this callback URL once: `%@`"
           }
         }
       }

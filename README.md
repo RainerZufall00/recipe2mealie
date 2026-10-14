@@ -10,8 +10,7 @@
 </p>
 
 <p align="center">
-  <!-- TODO: replace with the real App Store link once the app is live -->
-  <a href="https://apps.apple.com/app/idXXXXXXXXXX">
+  <a href="https://apps.apple.com/app/id6816929559">
     <img src="docs/images/app-store-badge.svg" height="54" alt="Download on the App Store">
   </a>
 </p>
@@ -76,7 +75,7 @@ recipe data directly.
 
 ## 🚀 Get started
 
-[Download Recipe2Mealie on the App Store](https://apps.apple.com/app/idXXXXXXXXXX) <!-- TODO: real App Store link -->
+[Download Recipe2Mealie on the App Store](https://apps.apple.com/app/id6816929559)
 
 1. Enter your Mealie server address and sign in (account or API token).
 2. Share a video, website or photo to **Recipe2Mealie** – or use the import screen.

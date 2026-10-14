@@ -1,18 +1,21 @@
-name: Bug report / Fehler melden
-description: Something doesn't work as expected. / Etwas funktioniert nicht wie erwartet.
+name: Bug report
+description: Something doesn't work as expected.
 labels: [bug]
 body:
+  - type: markdown
+    attributes:
+      value: Please write in English so everyone can follow along.
   - type: textarea
     id: what-happened
     attributes:
-      label: What happened? / Was ist passiert?
+      label: What happened?
       description: What did you do, what did you expect, and what happened instead?
     validations:
       required: true
   - type: input
     id: source
     attributes:
-      label: Source / Quelle
+      label: Source
       description: The link or kind of source you imported, if it matters (e.g. a YouTube Short, a website, a photo).
   - type: input
     id: app-version
@@ -29,6 +32,6 @@ body:
   - type: textarea
     id: log
     attributes:
-      label: Log / Protokoll
+      label: Log
       description: Optional. Settings → Diagnostics → Create Log, then paste or attach it here.
       render: text

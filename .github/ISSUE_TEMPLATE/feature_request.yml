@@ -1,11 +1,14 @@
-name: Idea / Idee vorschlagen
-description: Suggest something that would make the app better. / Schlag etwas vor, das die App besser macht.
+name: Feature idea
+description: Suggest something that would make the app better.
 labels: [enhancement]
 body:
+  - type: markdown
+    attributes:
+      value: Please write in English so everyone can follow along.
   - type: textarea
     id: idea
     attributes:
-      label: Your idea / Deine Idee
+      label: Your idea
       description: What would you like, and what would it help you with?
     validations:
       required: true

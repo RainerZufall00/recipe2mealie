@@ -1,6 +1,6 @@
 # Privacy Policy / Datenschutzerklärung – Recipe2Mealie
 
-*Last updated / Stand: 29 September 2026*
+*Last updated / Stand: 14 October 2026*
 
 [English](#english) · [Deutsch](#deutsch)
 
@@ -26,12 +26,15 @@ Email: feedback@mail.mueller.ad
 | Server address, API token, recipes, photos, text and links you import | **Your own Mealie server** | When you sign in, browse recipes or import |
 | Links, texts and photos for "Mealie AI" imports | Your Mealie server, which passes them to the AI provider **you** configured in Mealie | Only when you choose Mealie AI |
 | YouTube video ID | Google (YouTube Data API) | When you import a YouTube link, to read its title and description |
+| Instagram or TikTok link | Instagram (Meta) or TikTok, read without an account | When you import such a link, to read its public caption |
 | The link you import | The website or YouTube, to show a preview (title, image) | When you open the import screen for a link |
 
-Your Mealie server is operated by you or by someone you chose; its privacy is governed by whoever runs it. When
-the app contacts Google or a website, your IP address is transmitted as with any web request. See the
-[Google Privacy Policy](https://policies.google.com/privacy). This app uses YouTube API Services, see the
-[YouTube Terms of Service](https://www.youtube.com/t/terms).
+Your Mealie server is operated by you or by someone you chose; its privacy is governed by whoever runs it. When the
+app contacts Google, Instagram, TikTok or a website, your IP address is transmitted as with any web request. See
+the [Google Privacy Policy](https://policies.google.com/privacy), the [Instagram Privacy
+Policy](https://privacycenter.instagram.com/policy) and the [TikTok Privacy
+Policy](https://www.tiktok.com/legal/privacy-policy). This app uses YouTube API Services, see the [YouTube Terms of
+Service](https://www.youtube.com/t/terms).
 
 ### Feedback
 If you send feedback from the app, it opens either your mail app or a form on GitHub. Nothing is sent until you
@@ -89,12 +92,15 @@ E-Mail: feedback@mail.mueller.ad
 | Server-Adresse, API-Token, Rezepte sowie Fotos, Texte und Links, die du importierst | **Dein eigener Mealie-Server** | Beim Anmelden, Ansehen von Rezepten und Importieren |
 | Links, Texte und Fotos bei Importen mit „Mealie AI“ | Dein Mealie-Server, der sie an den KI-Anbieter weitergibt, den **du** in Mealie eingerichtet hast | Nur wenn du Mealie AI wählst |
 | YouTube-Video-ID | Google (YouTube Data API) | Beim Import eines YouTube-Links, um Titel und Beschreibung zu lesen |
+| Instagram- oder TikTok-Link | Instagram (Meta) bzw. TikTok, ohne Konto abgerufen | Beim Import eines solchen Links, um die öffentliche Beschreibung zu lesen |
 | Der importierte Link | Die Webseite bzw. YouTube, für die Vorschau (Titel, Bild) | Beim Öffnen des Import-Fensters für einen Link |
 
 Deinen Mealie-Server betreibst du selbst oder jemand deiner Wahl; für dessen Datenschutz ist der jeweilige
-Betreiber verantwortlich. Wenn die App Google oder eine Webseite kontaktiert, wird wie bei jedem Webabruf deine
-IP-Adresse übertragen. Siehe die [Datenschutzerklärung von Google](https://policies.google.com/privacy). Diese
-App nutzt YouTube-API-Dienste, siehe die [YouTube-Nutzungsbedingungen](https://www.youtube.com/t/terms).
+Betreiber verantwortlich. Wenn die App Google, Instagram, TikTok oder eine Webseite kontaktiert, wird wie bei jedem
+Webabruf deine IP-Adresse übertragen. Siehe die [Datenschutzerklärung von
+Google](https://policies.google.com/privacy), von [Instagram](https://privacycenter.instagram.com/policy) und von
+[TikTok](https://www.tiktok.com/legal/privacy-policy). Diese App nutzt YouTube-API-Dienste, siehe die
+[YouTube-Nutzungsbedingungen](https://www.youtube.com/t/terms).
 
 ### Feedback
 Wenn du aus der App Feedback gibst, öffnet sich entweder deine Mail-App oder ein Formular auf GitHub. Gesendet

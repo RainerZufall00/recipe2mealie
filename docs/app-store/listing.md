@@ -35,7 +35,7 @@ TEILEN UND FERTIG
 Teile einen YouTube Short, ein Instagram Reel, ein TikTok oder eine Rezeptseite aus jeder App mit Recipe2Mealie. Du siehst live, was gerade passiert, und am Ende das fertige Rezept mit Zutaten, Schritten und Bild.
 
 ERST DIE BESCHREIBUNG, DANN DAS VIDEO
-Bei YouTube schaut die App zuerst in die Videobeschreibung. Steht dort ein Link zur Rezeptseite oder das Rezept selbst, übernimmst du es direkt – schneller und genauer, als das ganze Video transkribieren zu lassen.
+Bei YouTube, Instagram und TikTok schaut die App zuerst in die Videobeschreibung. Steht dort ein Link zur Rezeptseite oder das Rezept selbst, übernimmst du es direkt – schneller und genauer, als das ganze Video transkribieren zu lassen.
 
 KOCHBÜCHER UND FOTOS
 Scanne Kochbuchseiten mit der Kamera, wähle Fotos aus oder füge Text ein. Auf Geräten mit Apple Intelligence wertet Recipe2Mealie sie direkt auf dem iPhone aus. Dein Mealie-Server bekommt nur das fertige Rezept.
@@ -52,7 +52,9 @@ Du brauchst einen eigenen Mealie-Server (mealie.io). Für Video-Importe muss in 
 Recipe2Mealie ist Open Source und eine unabhängige App. Sie ist nicht mit dem Mealie-Projekt verbunden und wird nicht von ihm unterstützt.
 
 **Neu in dieser Version** [4000]
-Erste Version.
+• Instagram und TikTok: Die App liest jetzt auch hier zuerst die Beschreibung. Steht das Rezept darin, übernimmst du es direkt – ohne dass Mealie das Video herunterladen muss.
+• Hilfe bei Instagram-Reels: Instagram blockiert Video-Downloads inzwischen oft. Scheitert der Import deshalb, kannst du das Rezept mit einem Tipp aus der Beschreibung übernehmen.
+• Bessere Rezepterkennung in Beschreibungen, auch wenn alles in einer Zeile steht oder Mengen wie „500gr“ und „2 Esl.“ vorkommen.
 
 ---
 
@@ -77,7 +79,7 @@ SHARE AND YOU'RE DONE
 Share a YouTube Short, an Instagram Reel, a TikTok or a recipe website from any app with Recipe2Mealie. You see live what's happening, and at the end the finished recipe with ingredients, steps and image.
 
 DESCRIPTION FIRST, THEN THE VIDEO
-For YouTube, the app looks at the video description first. If it links to the recipe page or contains the recipe itself, you import that directly – faster and more accurate than transcribing the whole video.
+For YouTube, Instagram and TikTok, the app looks at the video description first. If it links to the recipe page or contains the recipe itself, you import that directly – faster and more accurate than transcribing the whole video.
 
 COOKBOOKS AND PHOTOS
 Scan cookbook pages with the camera, pick photos or paste text. On devices with Apple Intelligence, Recipe2Mealie processes them right on your iPhone. Your Mealie server only receives the finished recipe.
@@ -94,7 +96,9 @@ You need your own Mealie server (mealie.io). Video imports require an AI provide
 Recipe2Mealie is open source and an independent app. It is not affiliated with or endorsed by the Mealie project.
 
 **What's New** [4000]
-First release.
+• Instagram and TikTok: the app now checks the caption first here too. If the recipe is in it, you import it directly – without Mealie having to download the video.
+• Help with Instagram Reels: Instagram now often blocks video downloads. If an import fails because of that, one tap imports the recipe from the caption instead.
+• Better recipe detection in captions, even when everything is on one line or amounts are written like "500gr".
 
 ---
 

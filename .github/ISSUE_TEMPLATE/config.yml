@@ -1,1 +1,5 @@
 blank_issues_enabled: true
+contact_links:
+  - name: Question / Frage
+    url: https://github.com/RainerZufall00/recipe2mealie/discussions/categories/q-a
+    about: Questions about setup or usage go to Discussions. / Fragen zu Einrichtung oder Nutzung bitte in die Discussions.

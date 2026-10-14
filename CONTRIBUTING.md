@@ -43,7 +43,7 @@ xcodebuild -scheme MealieKit -destination 'platform=iOS Simulator,name=iPhone 18
 | `Packages/MealieKit/` | Shared Swift package: Mealie API client, import flow, on-device AI, recipe views |
 | `Config/` | Build settings, entitlements and Info.plist files |
 | `ci_scripts/` | Xcode Cloud scripts for the App Store builds |
-| `docs/` | Privacy policy, App Store material, and the original (German) concept documents |
+| `docs/` | Privacy policy, support page, README images and App Store texts |
 
 Translations live in String Catalogs: `Recipe2Mealie/Localizable.xcstrings`,
 `ShareExtension/Localizable.xcstrings` and `Packages/MealieKit/Sources/MealieKit/Resources/Localizable.xcstrings`.

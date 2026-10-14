@@ -105,9 +105,9 @@ public final class DemoMealieAPI: MealieAPI {
             : LinkPreview(title: Self.salmon.name, subtitle: url.host(), imageURL: image)
     }
 
-    func videoInfo(for url: URL) -> YouTubeVideoInfo? {
+    func videoInfo(for url: URL) -> VideoInfo? {
         guard SourceKind(url: url) == .youTubeShort || SourceKind(url: url) == .youTube else { return nil }
-        return YouTubeVideoInfo(
+        return VideoInfo(
             id: "demo", title: "Crispy salmon in 15 minutes 🔥 #shorts", channel: "Weeknight Kitchen",
             description: """
                 The crispiest salmon skin, every single time.

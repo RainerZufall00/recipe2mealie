@@ -241,3 +241,60 @@ struct DescriptionAnalyzerTests {
         #expect(findings.isEmpty)
     }
 }
+
+struct TikTokTests {
+    @Test func recognisesRecipeWithoutLineBreaks() {
+        let caption = "Die Weltbesten Zimtschnecken 😍 Rezept: 250 ml lauwarme Milch 20 g frische Hefe 60 g Zucker "
+            + "1 Ei 3 EL geschmolzene Butter 1 Prise Salz 500 g Mehl #backen #zimtschnecken"
+        #expect(DescriptionAnalyzer.analyze(caption).containsRecipe)
+        #expect(DescriptionAnalyzer.analyze("Zutaten: ✳️800g Rindfleisch ✳️2 EL Tomatenmark ✳️1,5 l Brühe ✳️1kg Kloßteig")
+            .containsRecipe)
+        #expect(DescriptionAnalyzer.analyze("Zutaten: 500gr Hähnchenbrust, 2 große Kartoffeln, 1 EL Tomatenmark, "
+            + "200ml Sahne, 1 EL Frischkäse").containsRecipe)
+        #expect(DescriptionAnalyzer.analyze("Ihr braucht: 🌸600gr Kartoffeln 🌸1x große Zwiebel 🌸400ml Schlagsahne "
+            + "🌸2 Esl. Gemüsebrühe 🌸2 Esl. Sojasauce").containsRecipe)
+        #expect(!DescriptionAnalyzer.analyze("Unser Urlaub 2 Liter Wasser, 3 Gläser und 0:00 Intro").containsRecipe)
+    }
+
+    @Test func recognisesVideoLinks() {
+        #expect(URL(string: "https://www.tiktok.com/@koch/video/7686878595041463585")!.isTikTokVideo)
+        #expect(!URL(string: "https://vm.tiktok.com/ZTR45GpSF/")!.isTikTokVideo)
+    }
+}
+
+struct InstagramTests {
+    @Test func extractsShortcodes() {
+        #expect(URL(string: "https://www.instagram.com/reel/DePb6WLuVae/?igsh=abc")!.instagramShortcode == "DePb6WLuVae")
+        #expect(URL(string: "https://instagram.com/p/DePb6WLuVae")!.instagramShortcode == "DePb6WLuVae")
+        #expect(URL(string: "https://www.instagram.com/koch/reel/Dd9RyBWBVih/")!.instagramShortcode == "Dd9RyBWBVih")
+        #expect(URL(string: "https://www.instagram.com/koch/reels/")!.instagramShortcode == nil)
+        #expect(URL(string: "https://www.youtube.com/p/abc")!.instagramShortcode == nil)
+    }
+
+    @Test func readsEmbedCaption() throws {
+        let html = """
+            <div class="Caption"><a class="CaptionUsername" href="https://www.instagram.com/koch/?utm_source=ig_embed&amp;ig_rid=x" \
+            target="_blank">koch</a><br /><br />Käsespätzle &#x1f9c0;\u{2063}<br />\u{2063}<br />Zutaten:<br />400 g Mehl<br />\
+            4 Eier<br />Rezept von <a href="/oma/?utm_source=ig_embed">&#064;oma</a><div class="CaptionComments">x</div></div>
+            """
+        let info = try #require(InstagramPost.embedCaption(in: html, code: "abc"))
+        #expect(info.channel == "@koch")
+        #expect(info.description == "Käsespätzle 🧀\n\nZutaten:\n400 g Mehl\n4 Eier\nRezept von @oma")
+    }
+
+    @Test func readsOpenGraphCaption() throws {
+        let html = """
+            <meta property="og:description" content="711K likes, 22K comments - koch on October 8, 2026: &quot;Der \
+            &quot;beste&quot; Kuchen\u{2063}
+            \u{2063}
+            200 g Zucker&quot;. " />
+            """
+        let info = try #require(InstagramPost.openGraphCaption(in: html, code: "abc"))
+        #expect(info.channel == "@koch")
+        #expect(info.description == "Der \"beste\" Kuchen\n\n200 g Zucker")
+    }
+
+    @Test func emptyCaptionIsNoInfo() {
+        #expect(InstagramPost.embedCaption(in: #"<div class="Caption"><div class="CaptionComments">"#, code: "abc") == nil)
+    }
+}

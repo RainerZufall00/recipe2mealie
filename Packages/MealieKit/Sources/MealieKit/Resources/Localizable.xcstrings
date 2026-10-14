@@ -474,6 +474,16 @@
         }
       }
     },
+    "Die Beschreibung lädt die App direkt von %@. Für den Import geht nur deine Wahl an %@ – beim ganzen Video wertet Mealie es mit dem dort eingerichteten KI-Dienst aus." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app loads the caption directly from %@. Only your choice is sent to %@ – for the whole video, Mealie processes it with the AI service set up there."
+          }
+        }
+      }
+    },
     "Die Server-Adresse ist ungültig." : {
       "localizations" : {
         "en" : {

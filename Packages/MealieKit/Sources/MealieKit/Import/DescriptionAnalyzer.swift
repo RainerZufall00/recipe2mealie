@@ -61,8 +61,8 @@ public enum DescriptionAnalyzer {
     private static let headings = ["zutaten", "ingredients", "zubereitung", "anleitung", "instructions",
                                    "method", "für den teig", "für die sauce", "für die soße"]
 
-    private static let units = ["g", "kg", "mg", "ml", "l", "cl", "dl", "el", "tl", "msp", "tbsp", "tsp",
-                                "cup", "cups", "oz", "lb", "lbs", "prise", "prisen", "stk", "stück", "zehe",
+    private static let units = ["g", "gr", "gramm", "kg", "mg", "ml", "l", "liter", "cl", "dl", "el", "tl", "esl",
+                                "tsl", "msp", "tbsp", "tsp", "cup","cups", "oz", "lb", "lbs", "prise", "prisen", "stk", "stück", "zehe",
                                 "zehen", "dose", "dosen", "bund", "scheibe", "scheiben", "pck", "päckchen",
                                 "becher", "glas", "handvoll", "tasse", "tassen", "zweig", "zweige"]
 
@@ -73,6 +73,15 @@ public enum DescriptionAnalyzer {
         }
         let ingredientLines = lines.filter(isIngredientLine).count
         return (hasHeading && ingredientLines >= 2) || ingredientLines >= 4
+            || amountCount(in: lines.joined(separator: " ")) >= 4
+    }
+
+    /// TikTok drops line breaks, so a whole recipe can be one line: count "250 ml", "3 EL" anywhere.
+    static func amountCount(in text: String) -> Int {
+        let pattern = #"(?<![\p{L}\p{N}.,/])[\d½¼¾⅓⅔][\d.,/]*\s?("# + units.joined(separator: "|") + #")(?!\p{L})"#
+        // NSRegularExpression, because Swift's Regex has no lookbehind.
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive) else { return 0 }
+        return regex.numberOfMatches(in: text, range: NSRange(text.startIndex..., in: text))
     }
 
     /// "200 g Mehl", "- 2 EL Olivenöl", "½ TL Salz", but not "0:00 Intro" or "20 % Rabatt".

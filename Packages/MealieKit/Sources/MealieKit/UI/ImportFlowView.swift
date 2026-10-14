@@ -219,6 +219,8 @@ public struct ImportFlowView: View {
             return L("Die Auswertung passiert auf deinem iPhone. An \(host) geht erst das fertige Rezept.")
         }
         switch session.source {
+        case .link where session.videoInfo != nil && [.instagram, .tikTok].contains(session.source.kind):
+            return L("Die Beschreibung lädt die App direkt von \(session.source.kind.title). Für den Import geht nur deine Wahl an \(host) – beim ganzen Video wertet Mealie es mit dem dort eingerichteten KI-Dienst aus.")
         case .link where session.videoInfo != nil:
             return L("Titel und Beschreibung stammen aus der YouTube-API. Für den Import geht nur deine Wahl an \(host) – beim ganzen Video wertet Mealie es mit dem dort eingerichteten KI-Dienst aus.")
         case .link:
@@ -254,6 +256,18 @@ public struct ImportFlowView: View {
             .buttonStyle(.glassProminent)
             .tint(.brand)
             .controlSize(.large)
+
+            if let fallback = session.descriptionFallback {
+                Button {
+                    session.start(options: account.importOptions, using: fallback)
+                } label: {
+                    Label(L("Aus der Beschreibung übernehmen"), systemImage: "text.alignleft")
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 4)
+                }
+                .buttonStyle(.glass)
+                .controlSize(.large)
+            }
 
             if session.canRetryWithServerAI {
                 Button {

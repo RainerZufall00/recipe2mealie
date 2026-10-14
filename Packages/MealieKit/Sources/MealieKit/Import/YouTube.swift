@@ -1,7 +1,8 @@
 import Foundation
 
-/// Title, description and length of a YouTube video, from the official YouTube Data API.
-public struct YouTubeVideoInfo: Sendable, Equatable {
+/// Title, description and length of a shared video: from the YouTube Data API, or the caption of
+/// an Instagram post (no title, no length).
+public struct VideoInfo: Sendable, Equatable {
     public var id: String
     public var title: String
     public var channel: String
@@ -47,7 +48,7 @@ public enum YouTubeAPIKey {
 
 public enum YouTubeDataAPI {
     /// One `videos.list` call: costs 1 of the 10,000 free daily quota units.
-    public static func video(id: String, apiKey: String, session: URLSession = .shared) async throws -> YouTubeVideoInfo {
+    public static func video(id: String, apiKey: String, session: URLSession = .shared) async throws -> VideoInfo {
         var url = URL(string: "https://www.googleapis.com/youtube/v3/videos")!
         url.append(queryItems: [
             URLQueryItem(name: "part", value: "snippet,contentDetails"),
@@ -90,7 +91,7 @@ public enum YouTubeDataAPI {
             throw YouTubeError.notFound
         }
         let thumbnails = item.snippet.thumbnails ?? [:]
-        return YouTubeVideoInfo(
+        return VideoInfo(
             id: item.id,
             title: item.snippet.title,
             channel: item.snippet.channelTitle,

@@ -28,8 +28,8 @@ public final class ImportSession: Identifiable {
     public private(set) var startedAt: Date?
     public private(set) var preview: LinkPreview?
 
-    /// YouTube title, description and length, when a YouTube API key is set.
-    public private(set) var videoInfo: YouTubeVideoInfo?
+    /// YouTube title, description and length (when a YouTube API key is set), or an Instagram caption.
+    public private(set) var videoInfo: VideoInfo?
     /// What the video description offers: a recipe link, the recipe itself, or nothing.
     public private(set) var findings: DescriptionFindings?
     public private(set) var isCheckingDescription = false
@@ -60,22 +60,37 @@ public final class ImportSession: Identifiable {
             Task { [weak self] in
                 do {
                     let info = try await YouTubeDataAPI.video(id: videoID, apiKey: key)
-                    var findings = DescriptionAnalyzer.analyze(info.description)
-                    // A link is only worth offering if the page really holds a recipe.
-                    if let verified = await self?.verifiedRecipeLink(among: findings.recipeLinks) {
-                        findings.recipeLinks = [verified.url]
-                        self?.recipeLinkName = verified.name
-                    } else {
-                        findings.recipeLinks = []
-                    }
-                    self?.videoInfo = info
-                    self?.findings = findings
+                    await self?.checkDescription(of: info)
                 } catch {
                     log.error("YouTube lookup failed: \(error.localizedDescription, privacy: .public)")
                 }
                 self?.isCheckingDescription = false
             }
+        } else if [.instagram, .tikTok].contains(SourceKind(url: url)) {
+            // The caption often holds the whole recipe, which is faster than transcribing, and
+            // Mealie often can't download reels (Instagram blocks anonymous downloads).
+            isCheckingDescription = true
+            Task { [weak self] in
+                let info = SourceKind(url: url) == .tikTok
+                    ? await TikTokPost.caption(for: url)
+                    : await InstagramPost.caption(for: url)
+                if let info { await self?.checkDescription(of: info) }
+                self?.isCheckingDescription = false
+            }
         }
+    }
+
+    private func checkDescription(of info: VideoInfo) async {
+        var findings = DescriptionAnalyzer.analyze(info.description)
+        // A link is only worth offering if the page really holds a recipe.
+        if let verified = await verifiedRecipeLink(among: findings.recipeLinks) {
+            findings.recipeLinks = [verified.url]
+            recipeLinkName = verified.name
+        } else {
+            findings.recipeLinks = []
+        }
+        videoInfo = info
+        self.findings = findings
     }
 
     /// The demo shows the same preview and description choices, but offline.
@@ -135,8 +150,20 @@ public final class ImportSession: Identifiable {
 
     /// The video description as import text, title first so the recipe gets a proper name.
     public var descriptionSource: ImportSource? {
-        guard let videoInfo, findings?.containsRecipe == true else { return nil }
-        return .text("\(videoInfo.title)\n\n\(videoInfo.description)")
+        guard findings?.containsRecipe == true else { return nil }
+        return descriptionText.map(ImportSource.text)
+    }
+
+    /// When the video itself failed, the description is worth a try even if it doesn't look like a
+    /// recipe to the heuristics; Mealie AI may still find one.
+    public var descriptionFallback: ImportSource? {
+        guard case .failed = phase, activeSource == source else { return nil }
+        return descriptionText.map(ImportSource.text)
+    }
+
+    private var descriptionText: String? {
+        guard let videoInfo, videoInfo.description.nilIfBlank != nil else { return nil }
+        return [videoInfo.title, videoInfo.description].compactMap(\.nilIfBlank).joined(separator: "\n\n")
     }
 
     /// Starts the import. `override` imports something derived from the shared source instead,

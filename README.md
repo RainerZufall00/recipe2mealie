@@ -63,7 +63,8 @@ recipe data directly.
 - 🔗 **Share to import** – YouTube Shorts, Instagram Reels, TikTok or any recipe website, from any app
 - 🔍 **Description first** – finds the recipe link or text in a video's description before transcribing anything
 - 📸 **Scan cookbooks** – document camera, photo library or pasted text
-- 📖 **Recipe browser** – search, tag filters, scalable servings, cooking mode
+- 📖 **Recipe browser** – search, tag filters, scale amounts (even from what you have left), cooking mode
+- 🔐 **Sign in your way** – Mealie account, API token or your OIDC provider (Pocket ID, Authentik, …)
 - ✏️ **Edit everything** – every field, plus cover images from camera, photos or Image Playground
 - 🔒 **Private by design** – no accounts, no analytics; recipes only go to *your* server
 
@@ -84,6 +85,46 @@ No server? Tap **Try without a server** to explore with sample recipes.
 
 **Needs:** iOS / iPadOS 26 · Mealie 3.x · an AI provider with audio transcription for video imports ·
 Apple Intelligence for on-device processing
+
+## 🔐 Sign in with OIDC
+
+If your Mealie signs in through an OpenID Connect provider such as Pocket ID, Authentik or Keycloak, the app can
+use it too. As soon as you enter the server address, it shows **Sign in with …** (named after
+`OIDC_PROVIDER_NAME`). The sign-in opens in the system browser, so passkeys and password managers work as usual.
+Afterwards the app creates its own API token in Mealie, which you can revoke under **Profile → API Tokens**.
+
+**Requirements:** Mealie 3.23 or later with [OIDC set up](https://docs.mealie.io/documentation/getting-started/authentication/oidc-v2/).
+
+**One-time setup in your provider:** allow the app's callback URL on the OIDC client that Mealie already uses:
+
+```
+de.recipe2mealie.app:/oauth/callback
+```
+
+| Provider | Where to add it |
+|---|---|
+| Pocket ID | *OIDC Clients* → your Mealie client → *Callback URLs* |
+| Authentik | *Applications → Providers* → your Mealie provider → *Redirect URIs* |
+| Keycloak | *Clients* → your Mealie client → *Valid redirect URIs* |
+
+Keep the existing callback URL for Mealie's web login. Nothing changes in Mealie itself: the app exchanges the
+login through Mealie's endpoints for native apps, with the client and secret Mealie already has.
+
+**Google and Microsoft** don't allow custom callback URLs on a web client. They need a separate client for apps,
+set with `OIDC_NATIVE_CLIENT_ID` and `OIDC_NATIVE_CONFIDENTIAL=false`. These settings come with the first Mealie
+release after 3.28; see [Mealie's guide](https://docs.mealie.io/documentation/getting-started/authentication/oidc-v2/#public-native-clients-google-microsoft).
+
+<details>
+<summary>Troubleshooting</summary>
+
+- **No "Sign in with …" button:** OIDC isn't enabled in Mealie, or Mealie is older than 3.23 (the app then says so
+  below the server address).
+- **The provider reports an invalid redirect or callback URL:** the callback URL above is missing on Mealie's
+  client.
+- **"Mealie refused the sign-in":** the provider accepted you, but Mealie didn't – for example because the user
+  isn't in `OIDC_USER_GROUP` or `OIDC_SIGNUP_ENABLED` is off. Mealie's log says why.
+
+</details>
 
 ## 💬 Feedback & contributing
 

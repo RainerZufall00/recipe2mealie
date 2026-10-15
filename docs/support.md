@@ -43,6 +43,8 @@ needs Mealie 3.23 or later. The sign-in opens in the browser, so passkeys and pa
 Once, the Mealie admin has to allow the app's callback URL on the OIDC client Mealie uses in the provider:
 `de.recipe2mealie.app:/oauth/callback`. Google and Microsoft need a separate client for apps instead; see
 [Mealie's OIDC guide](https://mealie.io/documentation/getting-started/authentication/oidc-v2/).
+Step-by-step instructions for Pocket ID, Authentik and Keycloak and troubleshooting tips are in the
+[README](https://github.com/RainerZufall00/recipe2mealie#-sign-in-with-oidc).
 
 **The app can't connect to my server.**
 Check that the address includes `https://` (or `http://` on your home network) and that the server is reachable
@@ -105,6 +107,8 @@ funktionieren also wie gewohnt. Einmalig muss der Mealie-Admin beim OIDC-Client,
 die Callback-URL der App erlauben: `de.recipe2mealie.app:/oauth/callback`. Google und Microsoft brauchen
 stattdessen einen eigenen Client für Apps, siehe
 [OIDC-Anleitung von Mealie](https://mealie.io/documentation/getting-started/authentication/oidc-v2/).
+Eine Schritt-für-Schritt-Anleitung für Pocket ID, Authentik und Keycloak und Hilfe bei Problemen steht (auf
+Englisch) im [README](https://github.com/RainerZufall00/recipe2mealie#-sign-in-with-oidc).
 
 **Die App verbindet sich nicht mit meinem Server.**
 Prüfe, ob die Adresse mit `https://` beginnt (im Heimnetz ggf. `http://`) und ob der Server vom iPhone aus

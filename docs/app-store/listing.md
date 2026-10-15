@@ -41,20 +41,21 @@ KOCHBÜCHER UND FOTOS
 Scanne Kochbuchseiten mit der Kamera, wähle Fotos aus oder füge Text ein. Auf Geräten mit Apple Intelligence wertet Recipe2Mealie sie direkt auf dem iPhone aus. Dein Mealie-Server bekommt nur das fertige Rezept.
 
 DEINE REZEPTE, ÜBERALL
-Durchsuche deine Sammlung, filtere nach Tags, rechne Portionen um, hake Zutaten ab und nutze den Kochmodus, bei dem der Bildschirm an bleibt. Bearbeite jedes Rezept direkt in der App und setze Titelbilder mit der Kamera, aus deinen Fotos oder mit Image Playground.
+Durchsuche deine Sammlung, filtere nach Tags, hake Zutaten ab und nutze den Kochmodus, bei dem der Bildschirm an bleibt. Rechne Mengen um, auch passend zu dem, was du noch da hast. Bearbeite jedes Rezept direkt in der App und setze Titelbilder mit der Kamera, aus deinen Fotos oder mit Image Playground.
 
 PRIVAT
 Kein Konto, keine Werbung, kein Tracking. Deine Rezepte gehen nur an deinen eigenen Server.
 
 VORAUSSETZUNGEN
-Du brauchst einen eigenen Mealie-Server (mealie.io). Für Video-Importe muss in Mealie ein KI-Anbieter mit Audio-Transkription eingerichtet sein. Die Auswertung auf dem Gerät setzt Apple Intelligence voraus.
+Du brauchst einen eigenen Mealie-Server (mealie.io). Anmelden kannst du dich mit deinem Mealie-Konto, einem API-Token oder dem OIDC-Anbieter deines Servers, etwa Pocket ID oder Authentik. Für Video-Importe muss in Mealie ein KI-Anbieter mit Audio-Transkription eingerichtet sein. Die Auswertung auf dem Gerät setzt Apple Intelligence voraus.
 
 Recipe2Mealie ist Open Source und eine unabhängige App. Sie ist nicht mit dem Mealie-Projekt verbunden und wird nicht von ihm unterstützt.
 
 **Neu in dieser Version** [4000]
-• Instagram und TikTok: Die App liest jetzt auch hier zuerst die Beschreibung. Steht das Rezept darin, übernimmst du es direkt – ohne dass Mealie das Video herunterladen muss.
-• Hilfe bei Instagram-Reels: Instagram blockiert Video-Downloads inzwischen oft. Scheitert der Import deshalb, kannst du das Rezept mit einem Tipp aus der Beschreibung übernehmen.
-• Bessere Rezepterkennung in Beschreibungen, auch wenn alles in einer Zeile steht oder Mengen wie „500gr“ und „2 Esl.“ vorkommen.
+• Anmeldung über OIDC: Nutzt dein Mealie Pocket ID, Authentik oder einen anderen OIDC-Anbieter, meldest du dich jetzt direkt darüber an – im Browser, mit Passkey oder Passwort-Manager. Benötigt Mealie 3.23 oder neuer; wie du es einrichtest, steht in der Hilfe.
+• „Ich habe …“: Halte eine Zutat gedrückt und gib ein, wie viel du davon hast. Alle anderen Mengen werden passend umgerechnet.
+• Mengen umrechnen auch ohne Portionsangabe, einfach per Faktor.
+• Auch Zutaten, die nur als Text gespeichert sind, wie „4 Bananen“ oder „1/2 TL Salz“, werden jetzt mit umgerechnet. Geänderte Mengen sind farbig markiert.
 
 ---
 
@@ -85,20 +86,21 @@ COOKBOOKS AND PHOTOS
 Scan cookbook pages with the camera, pick photos or paste text. On devices with Apple Intelligence, Recipe2Mealie processes them right on your iPhone. Your Mealie server only receives the finished recipe.
 
 YOUR RECIPES, EVERYWHERE
-Search your collection, filter by tags, scale servings, check off ingredients and use cooking mode, which keeps the screen on. Edit every recipe right in the app and set cover images from the camera, your photos or Image Playground.
+Search your collection, filter by tags, check off ingredients and use cooking mode, which keeps the screen on. Scale amounts, even to match what you have left. Edit every recipe right in the app and set cover images from the camera, your photos or Image Playground.
 
 PRIVATE
 No account, no ads, no tracking. Your recipes only go to your own server.
 
 REQUIREMENTS
-You need your own Mealie server (mealie.io). Video imports require an AI provider with audio transcription set up in Mealie. On-device processing requires Apple Intelligence.
+You need your own Mealie server (mealie.io). Sign in with your Mealie account, an API token or your server's OIDC provider, such as Pocket ID or Authentik. Video imports require an AI provider with audio transcription set up in Mealie. On-device processing requires Apple Intelligence.
 
 Recipe2Mealie is open source and an independent app. It is not affiliated with or endorsed by the Mealie project.
 
 **What's New** [4000]
-• Instagram and TikTok: the app now checks the caption first here too. If the recipe is in it, you import it directly – without Mealie having to download the video.
-• Help with Instagram Reels: Instagram now often blocks video downloads. If an import fails because of that, one tap imports the recipe from the caption instead.
-• Better recipe detection in captions, even when everything is on one line or amounts are written like "500gr".
+• Sign in with OIDC: if your Mealie uses Pocket ID, Authentik or another OIDC provider, you can now sign in with it directly – in the browser, with a passkey or your password manager. Requires Mealie 3.23 or later; the help page explains the setup.
+• "I have …": touch and hold an ingredient and enter how much of it you have. All other amounts are scaled to match.
+• Scale amounts even when a recipe has no number of servings, simply by a factor.
+• Ingredients stored as plain text, like "4 bananas" or "1/2 tsp salt", are now scaled too. Changed amounts are highlighted.
 
 ---
 

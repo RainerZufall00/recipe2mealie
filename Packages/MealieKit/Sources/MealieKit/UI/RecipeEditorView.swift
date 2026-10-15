@@ -6,16 +6,23 @@ public struct RecipeEditorView: View {
     let api: any MealieAPI
     let original: Recipe
     let onSaved: (Recipe) -> Void
+    /// Deletes the recipe in Mealie. Without it, the editor offers no delete button.
+    let onDelete: (@MainActor () async throws -> Void)?
 
     @State private var draft: Draft
     @State private var isSaving = false
+    @State private var isDeleting = false
+    @State private var confirmingDelete = false
     @State private var error: String?
+    @State private var errorTitle = ""
     @State private var editingTags = false
     @Environment(\.dismiss) private var dismiss
 
-    public init(recipe: Recipe, api: any MealieAPI, onSaved: @escaping (Recipe) -> Void) {
+    public init(recipe: Recipe, api: any MealieAPI, onDelete: (@MainActor () async throws -> Void)? = nil,
+                onSaved: @escaping (Recipe) -> Void) {
         self.api = api
         self.original = recipe
+        self.onDelete = onDelete
         self.onSaved = onSaved
         _draft = State(initialValue: Draft(recipe: recipe))
     }
@@ -86,6 +93,21 @@ public struct RecipeEditorView: View {
                     multiline: true,
                     items: $draft.notes
                 )
+
+                if onDelete != nil {
+                    Section {
+                        Button(role: .destructive) {
+                            confirmingDelete = true
+                        } label: {
+                            HStack {
+                                Spacer()
+                                if isDeleting { ProgressView() } else { Text(L("Rezept löschen")) }
+                                Spacer()
+                            }
+                        }
+                        .disabled(isDeleting || isSaving)
+                    }
+                }
             }
             .navigationTitle(L("Bearbeiten"))
             .navigationBarTitleDisplayMode(.inline)
@@ -107,12 +129,29 @@ public struct RecipeEditorView: View {
                     draft.tags = tags
                 }
             }
-            .alert(L("Speichern fehlgeschlagen"), isPresented: .constant(error != nil)) {
+            .confirmationDialog(L("Rezept löschen?"), isPresented: $confirmingDelete, titleVisibility: .visible) {
+                Button(L("Aus Mealie löschen"), role: .destructive) { Task { await delete() } }
+            } message: {
+                Text(L("„\(original.displayName)“ wird endgültig aus Mealie gelöscht."))
+            }
+            .alert(errorTitle, isPresented: .constant(error != nil)) {
                 Button(L("OK")) { error = nil }
             } message: {
                 Text(error ?? "")
             }
             .interactiveDismissDisabled(draft.hasChanges(from: original))
+        }
+    }
+
+    private func delete() async {
+        guard let onDelete else { return }
+        isDeleting = true
+        defer { isDeleting = false }
+        do {
+            try await onDelete()
+        } catch {
+            errorTitle = L("Löschen fehlgeschlagen")
+            self.error = error.localizedDescription
         }
     }
 
@@ -124,6 +163,7 @@ public struct RecipeEditorView: View {
             onSaved(saved)
             dismiss()
         } catch {
+            errorTitle = L("Speichern fehlgeschlagen")
             self.error = error.localizedDescription
         }
     }

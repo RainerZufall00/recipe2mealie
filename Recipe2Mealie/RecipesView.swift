@@ -12,6 +12,8 @@ struct RecipesView: View {
     @State private var hasMore = true
     @State private var isLoading = false
     @State private var error: String?
+    @State private var recipeToDelete: RecipeSummary?
+    @State private var deleteError: String?
 
     private let pageSize = 30
 
@@ -26,6 +28,9 @@ struct RecipesView: View {
                             RecipeCard(recipe: recipe)
                         }
                         .buttonStyle(.plain)
+                        .contextMenu {
+                            Button("Löschen", systemImage: "trash", role: .destructive) { recipeToDelete = recipe }
+                        }
                         .onAppear {
                             if recipe.id == recipes.last?.id { Task { await loadMore() } }
                         }
@@ -51,9 +56,33 @@ struct RecipesView: View {
             .task { tags = (try? await account.api?.allTags()) ?? [] }
             .navigationDestination(for: RecipeSummary.self) { recipe in
                 if let api = account.api {
-                    RecipeDetailView(slug: recipe.slug, api: api, webURL: account.webURL(forRecipe: recipe.slug))
+                    RecipeDetailView(slug: recipe.slug, api: api, webURL: account.webURL(forRecipe: recipe.slug)) { slug in
+                        recipes.removeAll { $0.slug == slug }
+                    }
                 }
             }
+            .confirmationDialog("Rezept löschen?", isPresented: Binding(get: { recipeToDelete != nil },
+                                                                         set: { if !$0 { recipeToDelete = nil } }),
+                                titleVisibility: .visible, presenting: recipeToDelete) { recipe in
+                Button("Aus Mealie löschen", role: .destructive) { Task { await delete(recipe) } }
+            } message: { recipe in
+                Text("„\(recipe.displayName)“ wird endgültig aus Mealie gelöscht.")
+            }
+            .alert("Löschen fehlgeschlagen", isPresented: .constant(deleteError != nil)) {
+                Button("OK") { deleteError = nil }
+            } message: {
+                Text(deleteError ?? "")
+            }
+        }
+    }
+
+    private func delete(_ recipe: RecipeSummary) async {
+        do {
+            try await account.api?.deleteRecipe(slug: recipe.slug)
+            ImportHistory.remove(slug: recipe.slug)
+            withAnimation { recipes.removeAll { $0.slug == recipe.slug } }
+        } catch {
+            deleteError = error.localizedDescription
         }
     }
 

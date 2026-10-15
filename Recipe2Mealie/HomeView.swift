@@ -36,7 +36,9 @@ struct HomeView: View {
             .navigationTitle(greeting)
             .navigationDestination(item: $openedRecipe) { record in
                 if let api = account.api {
-                    RecipeDetailView(slug: record.slug, api: api, webURL: account.webURL(forRecipe: record.slug))
+                    RecipeDetailView(slug: record.slug, api: api, webURL: account.webURL(forRecipe: record.slug)) { _ in
+                        reloadHistory()
+                    }
                 }
             }
         }

@@ -20,6 +20,8 @@ public struct RecipeDetailView: View {
     let slug: String
     let api: any MealieAPI
     let webURL: URL?
+    /// Offers deleting the recipe; called with its slug once Mealie has deleted it.
+    let onDeleted: (@MainActor (String) -> Void)?
 
     @State private var recipe: Recipe?
     @State private var loadError: String?
@@ -30,15 +32,19 @@ public struct RecipeDetailView: View {
     @State private var checkedIngredients: Set<Int> = []
     @State private var doneSteps: Set<Int> = []
     @State private var cookMode = false
+    @State private var cookModeNotice: String?
     @State private var editing = false
 
+    @Environment(\.dismiss) private var dismiss
     @Environment(\.keepScreenAwake) private var keepScreenAwake
     @Environment(\.horizontalSizeClass) private var sizeClass
 
-    public init(slug: String, api: any MealieAPI, initial: Recipe? = nil, webURL: URL? = nil) {
+    public init(slug: String, api: any MealieAPI, initial: Recipe? = nil, webURL: URL? = nil,
+                onDeleted: (@MainActor (String) -> Void)? = nil) {
         self.slug = slug
         self.api = api
         self.webURL = webURL
+        self.onDeleted = onDeleted
         _recipe = State(initialValue: initial)
     }
 
@@ -58,9 +64,34 @@ public struct RecipeDetailView: View {
         .toolbar { toolbar }
         .task(id: slug) { await load() }
         .onDisappear { if cookMode { keepScreenAwake?(false) } }
+        .overlay(alignment: .top) {
+            if let cookModeNotice {
+                Label(cookModeNotice, systemImage: cookMode ? "frying.pan.fill" : "frying.pan")
+                    .font(.subheadline.weight(.medium))
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+                    .glassEffect(.regular, in: .capsule)
+                    .padding(.horizontal)
+                    .padding(.top, 8)
+                    .transition(.move(edge: .top).combined(with: .opacity))
+            }
+        }
+        .task(id: cookModeNotice) {
+            guard cookModeNotice != nil else { return }
+            try? await Task.sleep(for: .seconds(3))
+            guard !Task.isCancelled else { return }
+            withAnimation { cookModeNotice = nil }
+        }
         .sheet(isPresented: $editing) {
             if let recipe {
-                RecipeEditorView(recipe: recipe, api: api) { saved in
+                RecipeEditorView(recipe: recipe, api: api, onDelete: onDeleted.map { onDeleted in
+                    {
+                        try await api.deleteRecipe(slug: slug)
+                        ImportHistory.remove(slug: slug)
+                        onDeleted(slug)
+                        dismiss()
+                    }
+                }) { saved in
                     self.recipe = saved
                     scale = 1
                     checkedIngredients = []
@@ -335,6 +366,11 @@ public struct RecipeDetailView: View {
                 Button {
                     cookMode.toggle()
                     keepScreenAwake(cookMode)
+                    // The pan alone doesn't say what cooking mode does.
+                    withAnimation {
+                        cookModeNotice = cookMode ? L("Kochmodus: Der Bildschirm bleibt an, die Schritte sind größer.")
+                                                  : L("Kochmodus aus")
+                    }
                 } label: {
                     Label(cookMode ? L("Kochmodus beenden") : L("Kochmodus"),
                           systemImage: cookMode ? "frying.pan.fill" : "frying.pan")

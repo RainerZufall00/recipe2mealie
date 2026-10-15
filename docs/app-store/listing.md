@@ -55,6 +55,7 @@ Recipe2Mealie ist Open Source und eine unabhängige App. Sie ist nicht mit dem M
 • Anmeldung über OIDC: Nutzt dein Mealie Pocket ID, Authentik oder einen anderen OIDC-Anbieter, meldest du dich jetzt direkt darüber an – im Browser, mit Passkey oder Passwort-Manager. Benötigt Mealie 3.23 oder neuer; wie du es einrichtest, steht in der Hilfe.
 • „Ich habe …“: Halte eine Zutat gedrückt und gib ein, wie viel du davon hast. Alle anderen Mengen werden passend umgerechnet.
 • Mengen umrechnen auch ohne Portionsangabe, einfach per Faktor.
+• Rezepte löschen: im Bearbeiten-Bildschirm oder per langem Druck in der Rezeptliste.
 • Auch Zutaten, die nur als Text gespeichert sind, wie „4 Bananen“ oder „1/2 TL Salz“, werden jetzt mit umgerechnet. Geänderte Mengen sind farbig markiert.
 
 ---
@@ -100,6 +101,7 @@ Recipe2Mealie is open source and an independent app. It is not affiliated with o
 • Sign in with OIDC: if your Mealie uses Pocket ID, Authentik or another OIDC provider, you can now sign in with it directly – in the browser, with a passkey or your password manager. Requires Mealie 3.23 or later; the help page explains the setup.
 • "I have …": touch and hold an ingredient and enter how much of it you have. All other amounts are scaled to match.
 • Scale amounts even when a recipe has no number of servings, simply by a factor.
+• Delete recipes: from the edit screen, or touch and hold a recipe in the list.
 • Ingredients stored as plain text, like "4 bananas" or "1/2 tsp salt", are now scaled too. Changed amounts are highlighted.
 
 ---

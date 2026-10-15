@@ -44,6 +44,16 @@
         }
       }
     },
+    "„%@“ wird endgültig aus Mealie gelöscht." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” will be permanently deleted from Mealie."
+          }
+        }
+      }
+    },
     "%lld" : {
 
     },
@@ -734,6 +744,16 @@
         }
       }
     },
+    "Kochmodus aus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cooking mode off"
+          }
+        }
+      }
+    },
     "Kochmodus beenden" : {
       "localizations" : {
         "en" : {
@@ -744,12 +764,32 @@
         }
       }
     },
+    "Kochmodus: Der Bildschirm bleibt an, die Schritte sind größer." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cooking mode: the screen stays on and the steps are larger."
+          }
+        }
+      }
+    },
     "Kochzeit" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cook time"
+          }
+        }
+      }
+    },
+    "Löschen fehlgeschlagen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't Delete"
           }
         }
       }
@@ -950,6 +990,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Import Recipe"
+          }
+        }
+      }
+    },
+    "Rezept löschen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Recipe"
+          }
+        }
+      }
+    },
+    "Rezept löschen?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete recipe?"
           }
         }
       }

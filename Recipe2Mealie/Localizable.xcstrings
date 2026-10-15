@@ -11,6 +11,16 @@
         }
       }
     },
+    "„%@“ wird endgültig aus Mealie gelöscht." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "“%@” will be permanently deleted from Mealie."
+          }
+        }
+      }
+    },
     "Abbrechen" : {
       "localizations" : {
         "en" : {
@@ -127,6 +137,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Restore from iCloud"
+          }
+        }
+      }
+    },
+    "Aus Mealie löschen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete from Mealie"
           }
         }
       }
@@ -737,6 +757,26 @@
         }
       }
     },
+    "Löschen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        }
+      }
+    },
+    "Löschen fehlgeschlagen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't Delete"
+          }
+        }
+      }
+    },
     "Mealie" : {
 
     },
@@ -809,6 +849,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Opens the sign-in in the browser. Mealie's client in the provider must allow this callback URL once: `%@`"
+          }
+        }
+      }
+    },
+    "Rezept löschen?" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete recipe?"
           }
         }
       }

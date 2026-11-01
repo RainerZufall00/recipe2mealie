@@ -52,11 +52,8 @@ Du brauchst einen eigenen Mealie-Server (mealie.io). Anmelden kannst du dich mit
 Recipe2Mealie ist Open Source und eine unabhängige App. Sie ist nicht mit dem Mealie-Projekt verbunden und wird nicht von ihm unterstützt.
 
 **Neu in dieser Version** [4000]
-• Anmeldung über OIDC: Nutzt dein Mealie Pocket ID, Authentik oder einen anderen OIDC-Anbieter, meldest du dich jetzt direkt darüber an – im Browser, mit Passkey oder Passwort-Manager. Benötigt Mealie 3.23 oder neuer; wie du es einrichtest, steht in der Hilfe.
-• „Ich habe …“: Halte eine Zutat gedrückt und gib ein, wie viel du davon hast. Alle anderen Mengen werden passend umgerechnet.
-• Mengen umrechnen auch ohne Portionsangabe, einfach per Faktor.
-• Rezepte löschen: im Bearbeiten-Bildschirm oder per langem Druck in der Rezeptliste.
-• Auch Zutaten, die nur als Text gespeichert sind, wie „4 Bananen“ oder „1/2 TL Salz“, werden jetzt mit umgerechnet. Geänderte Mengen sind farbig markiert.
+• Angepasst an das iPhone Duo: Die App nutzt beide Displays ganz aus und bleibt beim Auf- und Zuklappen genau dort, wo du gerade bist.
+• Die Rezeptansicht passt sich schmalen Spalten besser an.
 
 ---
 
@@ -98,17 +95,15 @@ You need your own Mealie server (mealie.io). Sign in with your Mealie account, a
 Recipe2Mealie is open source and an independent app. It is not affiliated with or endorsed by the Mealie project.
 
 **What's New** [4000]
-• Sign in with OIDC: if your Mealie uses Pocket ID, Authentik or another OIDC provider, you can now sign in with it directly – in the browser, with a passkey or your password manager. Requires Mealie 3.23 or later; the help page explains the setup.
-• "I have …": touch and hold an ingredient and enter how much of it you have. All other amounts are scaled to match.
-• Scale amounts even when a recipe has no number of servings, simply by a factor.
-• Delete recipes: from the edit screen, or touch and hold a recipe in the list.
-• Ingredients stored as plain text, like "4 bananas" or "1/2 tsp salt", are now scaled too. Changed amounts are highlighted.
+• Made for iPhone Duo: the app fills both displays and keeps your place when you fold or unfold.
+• The recipe view handles narrow columns better.
 
 ---
 
 ## Screenshots
 
-Required: iPhone 6.9" (1320 × 2868) and iPad 13" (2064 × 2752), up to 10 each, per language.
+Required: iPhone 6.9" (1320 × 2868) and iPad 13" (2064 × 2752), up to 10 each, per language. iPhone Duo screenshots add a
+badge to the product page and become required for every submission from April 2027.
 Suggested order:
 
 1. Import home screen
@@ -125,5 +120,9 @@ Screens 1–6 and 8 come from the demo mode: launch with `-demo` (add `-AppleLan
 iPhone 18 Pro Max and iPad Pro 13-inch (M5) simulators; `xcrun simctl status_bar <device> override --time 9:41`
 cleans up the status bar, and on iPad set the simulator's system language too, since the date in the status bar
 follows it. Screen 7 needs a real device with a camera.
+
+iPhone Duo: 5 outer (1398 × 2034: home, progress, scaled ingredients, cooking mode, tag filter) and 5 inner (2853 × 2007,
+landscape: description choices, result, detail, recipes, edit), with no motif on both. Use the iPhone Duo runtime, not the
+generic iOS one; it unfolds only by hand in Device Hub, and paste does not work there. Spare shots are in `iphone-duo-reserve/`.
 
 The PNGs live in `docs/app-store/screenshots/<language>/<device>/`, which is git-ignored (about 34 MB).

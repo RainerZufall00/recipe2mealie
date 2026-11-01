@@ -112,6 +112,8 @@ struct RecipesView: View {
             .padding(.horizontal)
             .padding(.vertical, 8)
         }
+        // Keeps the tags out from under the status bar and the side bars of an iPhone Duo.
+        .clipped()
     }
 
     @ViewBuilder

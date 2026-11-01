@@ -110,13 +110,8 @@ public struct RecipeDetailView: View {
             VStack(alignment: .leading, spacing: 24) {
                 header(recipe)
 
-                if sizeClass == .regular {
-                    HStack(alignment: .top, spacing: 32) {
-                        ingredients(recipe).frame(maxWidth: 360)
-                        instructions(recipe)
-                    }
-                } else {
-                    ingredients(recipe)
+                columnLayout {
+                    ingredients(recipe).frame(maxWidth: sizeClass == .regular ? 360 : nil)
                     instructions(recipe)
                 }
 
@@ -129,6 +124,12 @@ public struct RecipeDetailView: View {
             .frame(maxWidth: .infinity)
         }
         .refreshable { await load() }
+    }
+
+    /// Folding an iPhone Duo changes the size class mid-recipe; one layout keeps the views in place.
+    private var columnLayout: AnyLayout {
+        sizeClass == .regular ? AnyLayout(HStackLayout(alignment: .top, spacing: 32))
+                              : AnyLayout(VStackLayout(alignment: .leading, spacing: 24))
     }
 
     private func header(_ recipe: Recipe) -> some View {
@@ -180,34 +181,19 @@ public struct RecipeDetailView: View {
     }
 
     private func ingredients(_ recipe: Recipe) -> some View {
-        let base = recipe.servings
         let canScale = recipe.ingredients.contains { $0.scalableAmount != nil }
 
         return VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                SectionTitle(L("Zutaten"))
-                Spacer()
-                if scale != 1 {
-                    Button(L("Originalmenge"), systemImage: "arrow.counterclockwise") { scale = 1 }
-                        .labelStyle(.iconOnly)
-                        .foregroundStyle(.secondary)
+            // The column can be narrow on the inner display of an iPhone Duo.
+            ViewThatFits(in: .horizontal) {
+                HStack {
+                    SectionTitle(L("Zutaten"))
+                    Spacer()
+                    scaleControls(servings: recipe.servings, canScale: canScale)
                 }
-                if let base {
-                    Stepper(value: Binding(get: { base * scale }, set: { scale = max(0.5, $0) / base }),
-                            in: 0.5...100, step: base >= 2 ? 1 : 0.5) {
-                        Text(L("\(RecipeFormat.servings(base * scale)) Portionen"))
-                            .font(.subheadline.monospacedDigit())
-                            .foregroundStyle(scale == 1 ? Color.secondary : Color.brand)
-                    }
-                    .fixedSize()
-                } else if canScale {
-                    // Without a number of servings, scale by a factor instead.
-                    Stepper(value: $scale, in: 0.5...20, step: 0.5) {
-                        Text(L("\(RecipeFormat.quantity(scale))×"))
-                            .font(.subheadline.monospacedDigit())
-                            .foregroundStyle(scale == 1 ? Color.secondary : Color.brand)
-                    }
-                    .fixedSize()
+                VStack(alignment: .leading, spacing: 8) {
+                    SectionTitle(L("Zutaten"))
+                    HStack { scaleControls(servings: recipe.servings, canScale: canScale) }
                 }
             }
 
@@ -268,6 +254,32 @@ public struct RecipeDetailView: View {
             Button(L("Abbrechen"), role: .cancel) {}
         } message: { prompt in
             Text(L("Statt „\(prompt.ingredient)“. Alle Zutaten werden passend umgerechnet."))
+        }
+    }
+
+    @ViewBuilder
+    private func scaleControls(servings base: Double?, canScale: Bool) -> some View {
+        if scale != 1 {
+            Button(L("Originalmenge"), systemImage: "arrow.counterclockwise") { scale = 1 }
+                .labelStyle(.iconOnly)
+                .foregroundStyle(.secondary)
+        }
+        if let base {
+            Stepper(value: Binding(get: { base * scale }, set: { scale = max(0.5, $0) / base }),
+                    in: 0.5...100, step: base >= 2 ? 1 : 0.5) {
+                Text(L("\(RecipeFormat.servings(base * scale)) Portionen"))
+                    .font(.subheadline.monospacedDigit())
+                    .foregroundStyle(scale == 1 ? Color.secondary : Color.brand)
+            }
+            .fixedSize()
+        } else if canScale {
+            // Without a number of servings, scale by a factor instead.
+            Stepper(value: $scale, in: 0.5...20, step: 0.5) {
+                Text(L("\(RecipeFormat.quantity(scale))×"))
+                    .font(.subheadline.monospacedDigit())
+                    .foregroundStyle(scale == 1 ? Color.secondary : Color.brand)
+            }
+            .fixedSize()
         }
     }
 

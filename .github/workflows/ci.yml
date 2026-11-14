@@ -2,18 +2,31 @@ name: CI
 
 on:
   push:
-    branches: [main]
   pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build-and-test:
-    # Builds with Xcode 26 and 27.
-    runs-on: macos-26
+    # Pull requests only from forks; own branches are already built on push.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.fork
+    runs-on: xcode-27
+    timeout-minutes: 30
+    env:
+      # Pinned, so a new Xcode on the runner doesn't turn builds red overnight.
+      # Raise it together with the Xcode used in Xcode Cloud.
+      XCODE_APP: /Applications/Xcode_27.2.app
     steps:
       - uses: actions/checkout@v5
 
-      - name: Select the newest Xcode
-        run: sudo xcode-select -s "$(ls -d /Applications/Xcode*.app | sort -V | tail -1)"
+      - name: Select Xcode
+        run: sudo xcode-select -s "$XCODE_APP"
 
       - name: Versions
         run: xcodebuild -version

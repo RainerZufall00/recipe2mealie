@@ -1,0 +1,92 @@
+# Builds the app, signs it with the developer's own Apple certificates and
+# uploads it to App Store Connect (TestFlight). Started by hand:
+# Actions → TestFlight → Run workflow. The work is in ci_scripts/testflight.sh;
+# why not Xcode Cloud is explained there.
+#
+# Repository secrets:
+#   SIGNING_CERTS_P12        .p12 (base64) with "Apple Development" and
+#                            "Apple Distribution", each with its private key
+#   SIGNING_CERTS_PASSWORD   password of the .p12
+#   ASC_KEY_ID, ASC_ISSUER_ID, ASC_KEY_P8
+#                            App Store Connect API key (role Admin), .p8 as text
+#   APPLE_TEAM_ID
+#   YOUTUBE_API_KEY          optional, see ci_scripts/ci_post_clone.sh
+name: TestFlight
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version, e.g. 1.2.3 (empty: MARKETING_VERSION from the project)'
+        type: string
+        required: false
+      upload:
+        description: 'Upload to App Store Connect (off: only build and check the signature)'
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: testflight
+  cancel-in-progress: false
+
+jobs:
+  testflight:
+    runs-on: xcode-27
+    timeout-minutes: 45
+    env:
+      # Same Xcode as in ci.yml.
+      XCODE_APP: /Applications/Xcode_27.2.app
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Select Xcode
+        run: sudo xcode-select -s "$XCODE_APP"
+
+      - name: Install certificates and API key
+        env:
+          SIGNING_CERTS_P12: ${{ secrets.SIGNING_CERTS_P12 }}
+          SIGNING_CERTS_PASSWORD: ${{ secrets.SIGNING_CERTS_PASSWORD }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: |
+          set -euo pipefail
+          KEYCHAIN="$RUNNER_TEMP/signing.keychain-db"
+          KEYCHAIN_PASSWORD="$(uuidgen)"
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN"
+          printf '%s' "$SIGNING_CERTS_P12" | base64 --decode > "$RUNNER_TEMP/certs.p12"
+          security import "$RUNNER_TEMP/certs.p12" -k "$KEYCHAIN" -f pkcs12 \
+            -P "$SIGNING_CERTS_PASSWORD" -T /usr/bin/codesign -T /usr/bin/security
+          rm -f "$RUNNER_TEMP/certs.p12"
+          security set-key-partition-list -S apple-tool:,apple:,codesign: -s \
+            -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN" > /dev/null
+          security list-keychains -d user -s "$KEYCHAIN" $(security list-keychains -d user | tr -d '"')
+          # Only the count: the identity names are not needed in a public log.
+          security find-identity -v -p codesigning "$KEYCHAIN" | tail -1
+          printf '%s\n' "$ASC_KEY_P8" > "$RUNNER_TEMP/AuthKey.p8"
+
+      - name: Write Secrets.xcconfig
+        env:
+          CI_PRIMARY_REPOSITORY_PATH: ${{ github.workspace }}
+          CI_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: sh ci_scripts/ci_post_clone.sh
+
+      - name: Archive, sign, check, upload
+        env:
+          VERSION: ${{ inputs.version }}
+          UPLOAD: ${{ inputs.upload && '1' || '0' }}
+          TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+          ASC_KEY_PATH: ${{ runner.temp }}/AuthKey.p8
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+        run: ci_scripts/testflight.sh
+
+      - name: Remove keychain and key
+        if: always()
+        run: |
+          security delete-keychain "$RUNNER_TEMP/signing.keychain-db" || true
+          rm -f "$RUNNER_TEMP/AuthKey.p8"
